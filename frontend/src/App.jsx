@@ -1,9 +1,9 @@
-import React from "react";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="h-screen w-full bg-green-800">hello app</h1>
+    <div className="min-h-screen w-full bg-zinc-800">
+      <h1 className="bg-green-800">hello app</h1>
+      <button className="bg-fuchsia-600">hello</button>
     </div>
   );
 };
