@@ -3,9 +3,10 @@
 ### User Routes
 
 #### Create User
-**Endpoint:** `POST /api/users`
+***Method:*** `POST`  
+**Endpoint:** `/api/users`
 
-**Description:** Creates a new user in the database.
+**Description:** Creates a new user.
 
 **Request Body:**
 ```json
@@ -49,7 +50,8 @@
 ---
 
 #### Login User
-**Endpoint:** `POST /api/users/logIn`
+***Method:*** `POST`  
+**Endpoint:** `/api/users/logIn`
 
 **Description:** Logs in an existing user.
 
@@ -78,4 +80,174 @@
     "message": "User not found"
   }
   ```
-- **401 Unauthorized:** If the password is
+- **401 Unauthorized:** If the password is invalid.
+  ```json
+  {
+    "message": "Invalid password"
+  }
+  ```
+
+---
+
+#### Logout User
+***Method:*** `POST`  
+**Endpoint:** `/api/users/logout`
+
+**Description:** Logs out the currently logged-in user by clearing the authentication token.
+
+**Response Body:**
+```json
+{
+  "message": "User logout successfully"
+}
+```
+
+---
+
+#### Get User Profile
+***Method:*** `GET`  
+**Endpoint:** `/api/users/profile`
+
+**Description:** Retrieves the profile of the currently logged-in user.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "username": "string",
+  "email": "string"
+}
+```
+
+**Error Responses:**
+- **404 Not Found:** If the user is not found.
+  ```json
+  {
+    "message": "User not found!"
+  }
+  ```
+
+---
+
+#### Update User Profile
+***Method:*** `PUT`  
+**Endpoint:** `/api/users/profile`
+
+**Description:** Updates the profile of the currently logged-in user.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Request Body:**
+```json
+{
+  "username": "string (optional)",
+  "email": "string (optional)",
+  "password": "string (optional)"
+}
+```
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "username": "string",
+  "email": "string",
+  "isAdmin": "boolean"
+}
+```
+
+**Error Responses:**
+- **404 Not Found:** If the user is not found.
+  ```json
+  {
+    "message": "User not found"
+  }
+  ```
+
+---
+
+#### Get All Users (Admin Only)
+***Method:*** `GET`  
+**Endpoint:** `/api/users`
+
+**Description:** Retrieves a list of all users. Only accessible by admin users.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Response Body:**
+```json
+[
+  {
+    "_id": "string",
+    "username": "string",
+    "email": "string",
+    "isAdmin": "boolean"
+  }
+]
+```
+
+---
+
+#### Get User by ID (Admin Only)
+***Method:*** `GET`  
+**Endpoint:** `/api/users/:id`
+
+**Description:** Retrieves a specific user by their ID. Only accessible by admin users.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "username": "string",
+  "email": "string",
+  "isAdmin": "boolean"
+}
+```
+
+**Error Responses:**
+- **404 Not Found:** If the user is not found.
+  ```json
+  {
+    "message": "User not found"
+  }
+  ```
+
+---
+
+#### Delete User by ID (Admin Only)
+***Method:*** `DELETE`  
+**Endpoint:** `/api/users/:id`
+
+**Description:** Deletes a specific user by their ID. Only accessible by admin users.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Response Body:**
+```json
+{
+  "message": "User deleted 👍"
+}
+```
+
+**Error Responses:**
+- **400 Bad Request:** If attempting to delete an admin user.
+  ```json
+  {
+    "message": "Can't delete admin user"
+  }
+  ```
+- **404 Not Found:** If the user is not found.
+  ```json
+  {
+    "message": "User not found"
+  }
+  ```
