@@ -1,9 +1,9 @@
-## API Endpoints
+# API Endpoints
 
-### User Routes
+## User Routes
 
-#### Create User
-***Method:*** `POST`  
+### Create User
+***http method:*** `POST`  
 **Endpoint:** `/api/users`
 
 **Description:** Creates a new user.
@@ -49,8 +49,8 @@
 
 ---
 
-#### Login User
-***Method:*** `POST`  
+### Login User
+***http http method:*** `POST`  
 **Endpoint:** `/api/users/logIn`
 
 **Description:** Logs in an existing user.
@@ -89,8 +89,8 @@
 
 ---
 
-#### Logout User
-***Method:*** `POST`  
+### Logout User
+***http http method:*** `POST`  
 **Endpoint:** `/api/users/logout`
 
 **Description:** Logs out the currently logged-in user by clearing the authentication token.
@@ -104,8 +104,8 @@
 
 ---
 
-#### Get User Profile
-***Method:*** `GET`  
+### Get User Profile
+***http http method:*** `GET`  
 **Endpoint:** `/api/users/profile`
 
 **Description:** Retrieves the profile of the currently logged-in user.
@@ -132,8 +132,8 @@
 
 ---
 
-#### Update User Profile
-***Method:*** `PUT`  
+### Update User Profile
+***http http method:*** `PUT`  
 **Endpoint:** `/api/users/profile`
 
 **Description:** Updates the profile of the currently logged-in user.
@@ -145,8 +145,7 @@
 ```json
 {
   "username": "string (optional)",
-  "email": "string (optional)",
-  "password": "string (optional)"
+  "email": "string (optional)"
 }
 ```
 
@@ -170,8 +169,10 @@
 
 ---
 
-#### Get All Users (Admin Only)
-***Method:*** `GET`  
+# Admin Routes
+
+### Get All Users (Admin Only)
+***http method:*** `GET`  
 **Endpoint:** `/api/users`
 
 **Description:** Retrieves a list of all users. Only accessible by admin users.
@@ -193,8 +194,8 @@
 
 ---
 
-#### Get User by ID (Admin Only)
-***Method:*** `GET`  
+### Get User by ID (Admin Only)
+***http method:*** `GET`  
 **Endpoint:** `/api/users/:id`
 
 **Description:** Retrieves a specific user by their ID. Only accessible by admin users.
@@ -222,8 +223,8 @@
 
 ---
 
-#### Delete User by ID (Admin Only)
-***Method:*** `DELETE`  
+### Delete User by ID (Admin Only)
+***http method:*** `DELETE`  
 **Endpoint:** `/api/users/:id`
 
 **Description:** Deletes a specific user by their ID. Only accessible by admin users.
@@ -245,6 +246,42 @@
     "message": "Can't delete admin user"
   }
   ```
+- **404 Not Found:** If the user is not found.
+  ```json
+  {
+    "message": "User not found"
+  }
+  ```
+
+  ### Update User by ID (Admin Only)
+***Method:*** `PUT`  
+**Endpoint:** `/api/users/:id`
+
+**Description:** Updates a specific user's details by their ID. Only accessible by admin users.
+
+**Headers:**
+- **Authorization:** Bearer token (required)
+
+**Request Body:**
+```json
+{
+  "username": "string (optional)",
+  "email": "string (optional)",
+  "isAdmin": "boolean (optional)"
+}
+```
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "username": "string",
+  "email": "string",
+  "isAdmin": "boolean"
+}
+```
+
+**Error Responses:**
 - **404 Not Found:** If the user is not found.
   ```json
   {
