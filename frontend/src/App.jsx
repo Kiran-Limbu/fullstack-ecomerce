@@ -1,11 +1,17 @@
+import {Outlet} from 'react-router-dom';
+import Navigation from './pages/Auth/Navigation';
+import {ToastContainer} from 'react-toastify';
 
 
 const App = () => {
   return (
-    <div className="min-h-screen w-full bg-zinc-800">
-      <h1 className="bg-green-800">hello app</h1>
-      <button className="bg-fuchsia-600">hello</button>
-    </div>
+    <>
+    <ToastContainer />
+    <Navigation />
+    <main className='w-full min-h-screen'>
+      <Outlet />
+    </main>
+    </>
   );
 };
 
