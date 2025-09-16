@@ -11,6 +11,8 @@ import {
     updateUserById
 } from "../controller/user.controller.js";
 import { authUser, authAdmin } from "../middlewares/auth.middleware.js";
+
+
 const router = express.Router();
 
 router.route('/')
