@@ -58,11 +58,11 @@ const Register = () => {
     >
       <form onSubmit={(e) => submitHandler(e)}>
         <div className="flex flex-col justify-center gap-3 py-3 px-5">
-          <h1 className="md:text-2xl text:md font-semibold text-center underline underline-offset-1">
+          <h1 className="md:text-2xl text:md font-semibold text-center">
             Register As a User
           </h1>
 
-          <div className="div">
+          <div>
             <label htmlFor="name" className="block text-md font-semibold mb-2">
               User Name
             </label>
@@ -76,7 +76,7 @@ const Register = () => {
               placeholder="Enter user name"
             />
           </div>
-          <div className="div">
+          <div>
             <label htmlFor="email" className="block text-md font-semibold mb-2">
               Email
             </label>
@@ -90,7 +90,7 @@ const Register = () => {
               placeholder="Enter your email"
             />
           </div>
-          <div className="div">
+          <div>
             <label
               htmlFor="passwword"
               className="block text-md font-semibold mb-2"
@@ -101,7 +101,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               required
               placeholder="Enter your password"

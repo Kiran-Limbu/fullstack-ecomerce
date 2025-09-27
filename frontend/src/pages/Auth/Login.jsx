@@ -38,7 +38,7 @@ const Login = () => {
       dispatch(setCredientials({ ...res }));
       toast.success("Login Successful");
     } catch (error) {
-      toast.error(error?.data?.message || error.massage);
+      toast.error(error?.data?.message);
     }
   };
 
@@ -46,7 +46,7 @@ const Login = () => {
     <div className="fixed top-23 shadow-2xl rounded-md left-0 md:left-1/4 w-full md:w-1/2">
       <form onSubmit={(e) => submitHandler(e)}>
         <div className="flex flex-col justify-center gap-5 py-5 px-6 ">
-          <h1 className="md:text-2xl text:md font-semibold text-center underline underline-offset-1">
+          <h1 className="md:text-2xl text:md font-semibold text-center">
             LogIn As a User
           </h1>
           <div className="div">
@@ -74,7 +74,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
-              type="password"
+              type={ showPassword ? "text" : "password" }
               id="password"
               required
               placeholder="Enter your password"

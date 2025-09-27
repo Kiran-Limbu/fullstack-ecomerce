@@ -3,7 +3,7 @@ import asyncHandler from '../middlewares/asyncHandler.middleware.js';
 import bcrypt from 'bcryptjs';
 import generateToken from '../utils/createToken.utils.js';
 
-const createUser = async (req, res) => {
+const createUser = async (req, res) => {    
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -37,6 +37,10 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
+
+    if(!email || !password){
+        throw new Error("All filed are required !");
+    }
 
     const allreadyExistUser = await userModel.findOne({ email });
 
@@ -109,7 +113,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
         res.status(201).json({
             _id: updatedUser._id,
-            usename: updatedUser.username,
+            username: updatedUser.username,
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin
         })

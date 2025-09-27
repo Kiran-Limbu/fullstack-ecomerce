@@ -15,20 +15,28 @@ import store from "./redux/store.js";
 //auth
 import Login from "./pages/Auth/Login.jsx";
 import Register from "./pages/Auth/Register.jsx";
-import ProctedRoute from "./components/ProctedRoute.jsx";
 import Profile from "./pages/User/Profile.jsx";
+import UserProctedRoute from "./components/procted-routes/UserProctedRoute.jsx";
+import AdminProtectedRoute from "./components/procted-routes/AdminProtectedRoute.jsx";
+import UserList from "./pages/Admin/UserList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-  <Route path="/" element={<App />}> 
+    <Route path="/" element={<App />}> 
+    
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
-  {/* protectedRoute */}
-    <Route path="" element={<ProctedRoute />}>
+  {/*User protected route */}
+    <Route path="" element={<UserProctedRoute />}>
       <Route path="/profile" element={<Profile />} />
      </Route>
 
-  <Route path="/login" element={<Login />} />
-  <Route path="/register" element={<Register />} />
+    {/* Admin protected routes */}
+    <Route path="/admin" element={<AdminProtectedRoute />}>
+    <Route path="userlist" element={<UserList />} />
+    </Route>
+
   </Route>
   )
 );

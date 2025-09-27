@@ -19,8 +19,8 @@ import { RiUserSearchFill } from "react-icons/ri";
 import { AnimatePresence, motion } from "motion/react";
 
 const Navigation = () => {
-  const { userInfo } = useSelector((state) => state.auth);
-
+  const { userInfo } = useSelector(state => state.auth);
+  
   const [userDropedown, setUserDropedown] = useState(false);
   const [adminDropdown, setAdminDropdown] = useState(false);
 
@@ -41,7 +41,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="bg-zinc-300 py-6 w-full flex items-center justify-around fixed">
+      <div className="bg-zinc-300 py-6 w-full flex items-center justify-around fixed z-999">
         {/* header element */}
         <div className="px-2 hover:opacity-70">
           <Link to="/">
@@ -55,7 +55,7 @@ const Navigation = () => {
             type="text"
             placeholder="Search in store"
           />
-          <span className="px-3 py-2 rounded-md cursor-pointer bg-zinc-200 rounded-l-none  hover:opacity-70">
+          <span className="px-2  text-md md:px-3 py-2 rounded-md cursor-pointer bg-zinc-200 rounded-l-none  hover:opacity-70">
             <AiOutlineSearch size={26} />
           </span>
         </div>
@@ -119,7 +119,7 @@ const Navigation = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ ease: "easeInOut", duration: 0.2 }}
-                    className="bg-zinc-200  rounded-md text-md font-semibold list-none absolute px-10 py-10 top-21 right-20 flex flex-col  gap-5"
+                    className="bg-zinc-200 rounded-md text-md font-semibold list-none absolute px-10 py-10 top-21 right-20 flex flex-col  gap-5"
                     onClick={() => setAdminDropdown(false)}
                   >
                     <li>

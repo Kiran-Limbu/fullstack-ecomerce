@@ -8,6 +8,7 @@ dotenv.config();
 // db connection
 import connectToDB from './config/db/db.js'
 import userRoutes from './routes/user.route.js'
+import { categoryRoutes } from './routes/category.route.js'
 
 connectToDB()
 
@@ -18,5 +19,6 @@ app.use(express.urlencoded({extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
+app.use('/api/category', categoryRoutes);
 
 export default app;
