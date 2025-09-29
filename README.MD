@@ -50,7 +50,7 @@
 ---
 
 ### Login User
-***http http method:*** `POST`  
+***http method:*** `POST`  
 **Endpoint:** `/api/users/logIn`
 
 **Description:** Logs in an existing user.
@@ -288,3 +288,96 @@
     "message": "User not found"
   }
   ```
+
+
+---
+## Category Routes
+
+### Create Category (Admin Only)
+***Method:*** `POST`  
+**Endpoint:** `/api/category`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)
+
+**Request Body:**
+```json
+{
+  "name": "string (required)"
+}
+```
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "name": "string"
+}
+```
+
+---
+
+### Update Category (Admin Only)
+***Method:*** `PUT`  
+**Endpoint:** `/api/category/:categoryId`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)
+
+**Request Body:**
+```json
+{
+  "name": "string (required)"
+}
+```
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "name": "string"
+}
+```
+
+---
+
+### Delete Category (Admin Only)
+***Method:*** `DELETE`  
+**Endpoint:** `/api/category/:categoryId`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)
+
+**Response Body:**
+```json
+{
+  "message": "Category deleted sucessfully ✅"
+}
+```
+
+---
+
+### List All Categories
+***Method:*** `GET`  
+**Endpoint:** `/api/category/categories`
+
+**Response Body:**
+```json
+[
+  {
+    "_id": "string",
+    "name": "string"
+  }
+]
+```
+
+---
+
+### Get Category by ID
+***Method:*** `GET`  
+**Endpoint:** `/api/category/:id`
+
+**Response Body:**
+```json
+{
+  "_id": "string",
+  "name": "string"
+}
+```

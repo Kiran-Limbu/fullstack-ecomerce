@@ -8,7 +8,7 @@ dotenv.config();
 // db connection
 import connectToDB from './config/db/db.js'
 import userRoutes from './routes/user.route.js'
-import { categoryRoutes } from './routes/category.route.js'
+import categoryRoutes  from './routes/category.route.js'
 
 connectToDB()
 
