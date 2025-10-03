@@ -3,7 +3,7 @@ import asyncHandler from '../middlewares/asyncHandler.middleware.js';
 import bcrypt from 'bcryptjs';
 import generateToken from '../utils/createToken.utils.js';
 
-const createUser = async (req, res) => {    
+const createUser = async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -38,7 +38,7 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-    if(!email || !password){
+    if (!email || !password) {
         throw new Error("All filed are required !");
     }
 
@@ -151,7 +151,7 @@ const getUserById = asyncHandler(async (req, res) => {
 
 });
 
-const updateUserById = asyncHandler(async (req, res) => { 
+const updateUserById = asyncHandler(async (req, res) => {
     const user = await userModel.findById(req.params.id);
 
     if (user) {

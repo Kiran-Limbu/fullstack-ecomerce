@@ -10,7 +10,7 @@ import {
 } from "../../redux/api/usersApiSlice.js";
 
 const UserList = () => {
-  const { data: users , refetch, isLoading, error } = useGetUsersQuery();
+  const { data: users, refetch, isLoading, error } = useGetUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -56,6 +56,7 @@ const UserList = () => {
   return (
     <div className="p-5 relative top-30">
       <h1 className="md:text-3xl text-lg font-semibold">Users</h1>
+
       {isLoading ? (
         <div className="w-full flex items-center justify-center">
           <ClipLoader size={70} />
@@ -65,7 +66,9 @@ const UserList = () => {
           <table className="w-full px-3 py-5">
             <thead>
               <tr>
-                <th className="font-semibold text-md md:text-xl text-left">ID</th>
+                <th className="font-semibold text-md md:text-xl text-left">
+                  ID
+                </th>
                 <th className="font-semibold text-md md:text-xl text-left">
                   NAME
                 </th>
@@ -78,7 +81,7 @@ const UserList = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {users?.map((user) => (
                 <tr key={user._id}>
                   <td className="px-5 py-3 text-green-800 ">{user._id}</td>
                   <td className="px-5 py-3 text-green-800">
@@ -163,6 +166,11 @@ const UserList = () => {
               ))}
             </tbody>
           </table>
+          {error && (
+            <div className="text-3xl text-center pt-10 text-red-800 font-semibold">
+              Something went wrong
+            </div>
+          )}
         </div>
       )}
     </div>

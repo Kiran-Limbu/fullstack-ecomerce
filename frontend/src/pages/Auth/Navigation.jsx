@@ -40,7 +40,6 @@ const Navigation = () => {
   };
 
   return (
-    <>
       <div className="bg-zinc-300 py-6 w-full flex items-center justify-around fixed z-999">
         {/* header element */}
         <div className="px-2 hover:opacity-70">
@@ -230,7 +229,6 @@ const Navigation = () => {
           </Link>
         </div>
       </div>
-    </>
   );
 };
 

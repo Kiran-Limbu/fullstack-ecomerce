@@ -15,8 +15,8 @@ router.route("/:categoryId")
     .put(authUser, authAdmin, updateCategory)
     .delete(authUser, authAdmin, deleteCategory);
 
-router.route("/categories").get(listCategory);
-router.route("/:id").get(getCategoryById);
+router.get("/categories", listCategory);                                    
+router.get("/:id", getCategoryById);
 
 
 export default router;
