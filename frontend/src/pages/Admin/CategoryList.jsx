@@ -7,6 +7,7 @@ import {
   useGetAllCategoryQuery,
 } from "../../redux/api/categoryApiSlice";
 import CategoryForm from "../../components/category/CategoryForm";
+import CategoryModel from "../../components/category/CategoryModel";
 
 const CategoryList = () => {
   const { data: categories } = useGetAllCategoryQuery();
@@ -22,25 +23,70 @@ const CategoryList = () => {
   const handelCreateCategory = async (e) => {
     e.preventDefault();
 
-    if(!name) {
-      toast.error('Category name is required')
+    if (!name) {
+      toast.error("Category name is required");
+      return;
     }
 
     try {
-      const result = await createCategory({name}).unwrap();
-      if(result.error){
+      const result = await createCategory({ name }).unwrap();
+      if (result.error) {
         toast.error(result.error);
-      } else{
-        setName("")
+      } else {
+        setName("");
         toast.success(`${result.name} is created`);
       }
-
     } catch (error) {
-      toast.error('Something wet wrong, try again.')
-      console.log(error)
+      toast.error("Something wet wrong, try again.");
+      console.log(error);
     }
-  }
+  };
 
+  const handelUpdateCategory = async (e) => {
+    e.preventDefault();
+
+    if (!updateName) {
+      toast.error("Category name is required");
+      return;
+    }
+
+    try {
+      const result = await updateCategory({
+        categoryId: selectedCategory._id,
+        updatedCategory: {
+          name: updateName,
+        }}).unwrap();
+
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success(`${result.name} is updated`);
+        setSelectedCategory(null);        
+        setUpdateName("");
+        setModelVisible(false);
+      }
+    } catch (error) {
+      toast.error("Something wet wrong, try again.2");
+      console.log(error);
+    }
+  };
+
+  const handleDeleteCategory = async () => {
+    try {
+      const result = await deleteCategory(selectedCategory._id).unwrap();
+
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success(result.message || "Category deleted sucessfully");
+        setModelVisible(false);
+        setSelectedCategory(null);
+      }
+    } catch (error) {
+      toast.error("Fail to delete category. Try again !");
+      console.log(error);
+    }
+  };
   return (
     <div className="w-full absolute top-1/5 pl-10 pr-10">
       <div className="p-2">
@@ -48,7 +94,7 @@ const CategoryList = () => {
         <CategoryForm
           value={name}
           setValue={setName}
-          handleSubmit={handelCreateCategory }
+          handleSubmit={handelCreateCategory}
         />
       </div>
       <div className="line w-full h-[2px] bg-zinc-700"></div>
@@ -69,7 +115,19 @@ const CategoryList = () => {
           </div>
         ))}
       </div>
-    </div>
+      <CategoryModel
+        isOpen={modelVisible}
+        onClose={() => setModelVisible(false)}
+      >
+        <CategoryForm
+          value={updateName}
+          setValue={setUpdateName}
+          handleSubmit={handelUpdateCategory}
+          buttonText="Update"
+          handleDelete={handleDeleteCategory}
+        />
+      </CategoryModel>
+      </div>
   );
 };
 

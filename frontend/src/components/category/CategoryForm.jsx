@@ -10,23 +10,25 @@ const CategoryForm = ({
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          className="px-5 py-3 border rounded-md md:w-1/2 w-full"
+          id="value"
+          className="px-5 py-3 border rounded-md w-full"
           placeholder="Write category name"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
 
-        <div className="flex justify-between pt-5 text-white">
+        <div className="flex items-center gap-5 pt-5 text-white">
           <button className="bg-zinc-700 px-5 cursor-pointer py-3 rounded-md hover:opacity-85 focus:outline-none focus:ring-zinc-700">
             {buttonText}
           </button>
-        </div>
 
         {handleDelete && (
           <button
+          type="button"
           onClick={handleDelete}
-          className="px-5 py-3 bg-red-700 rounded-md hover:opacity-85 cursor-pointer focus:outline-none focus:ring-2 focus:bg-red-700 text-white">Delete</button>
+          className="px-5 py-3 bg-red-700 rounded-md hover:opacity-85 cursor-pointer focus:outline-none text-white">Delete</button>
         )}
+        </div>
       </form>
     </div>
   );
