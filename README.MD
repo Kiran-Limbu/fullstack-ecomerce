@@ -90,7 +90,8 @@
 ---
 
 ### Logout User
-***http http method:*** `POST`  
+
+***http method:*** `POST`  
 **Endpoint:** `/api/users/logout`
 
 **Description:** Logs out the currently logged-in user by clearing the authentication token.
@@ -105,7 +106,7 @@
 ---
 
 ### Get User Profile
-***http http method:*** `GET`  
+***http method:*** `GET`  
 **Endpoint:** `/api/users/profile`
 
 **Description:** Retrieves the profile of the currently logged-in user.
@@ -133,7 +134,7 @@
 ---
 
 ### Update User Profile
-***http http method:*** `PUT`  
+***http method:*** `PUT`  
 **Endpoint:** `/api/users/profile`
 
 **Description:** Updates the profile of the currently logged-in user.
@@ -253,8 +254,8 @@
   }
   ```
 
-  ### Update User by ID (Admin Only)
-***Method:*** `PUT`  
+### Update User by ID (Admin Only)
+***http Method:*** `PUT`  
 **Endpoint:** `/api/users/:id`
 
 **Description:** Updates a specific user's details by their ID. Only accessible by admin users.
@@ -289,12 +290,11 @@
   }
   ```
 
-
 ---
 ## Category Routes
 
 ### Create Category (Admin Only)
-***Method:*** `POST`  
+***http Method:*** `POST`  
 **Endpoint:** `/api/category`  
 **Headers:**  
 - **Authorization:** Bearer token (required, admin only)
@@ -317,7 +317,7 @@
 ---
 
 ### Update Category (Admin Only)
-***Method:*** `PUT`  
+***http Method:*** `PUT`  
 **Endpoint:** `/api/category/:categoryId`  
 **Headers:**  
 - **Authorization:** Bearer token (required, admin only)
@@ -340,7 +340,7 @@
 ---
 
 ### Delete Category (Admin Only)
-***Method:*** `DELETE`  
+***http Method:*** `DELETE`  
 **Endpoint:** `/api/category/:categoryId`  
 **Headers:**  
 - **Authorization:** Bearer token (required, admin only)
@@ -355,7 +355,7 @@
 ---
 
 ### List All Categories
-***Method:*** `GET`  
+***http Method:*** `GET`  
 **Endpoint:** `/api/category/categories`
 
 **Response Body:**
@@ -371,7 +371,7 @@
 ---
 
 ### Get Category by ID
-***Method:*** `GET`  
+***http Method:*** `GET`  
 **Endpoint:** `/api/category/:id`
 
 **Response Body:**
@@ -380,4 +380,124 @@
   "_id": "string",
   "name": "string"
 }
+```
+
+---
+## Product Routes
+
+### Fetch Products (paginated / search)
+***http method:*** `GET`  
+**Endpoint:** `/api/products`  
+**Query (optional):**
+- `keyword` — search term
+
+**Response Body:**
+```json
+{
+  "products": [{ "...product fields..." }],
+  "page": 1,
+  "pages": 10,
+  "hasMore": false
+}
+```
+
+---
+
+### Create Product (Admin Only)
+***http method:*** `POST`  
+**Endpoint:** `/api/products`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)  
+**Content-Type:** multipart/form-data (use ExpressFormidable)
+
+**Request (form-data):**
+- `name` (string, required)
+- `brand` (string, required)
+- `quantity` (number, required)
+- `category` (categoryId, required)
+- `description` (string, required)
+- `price` (number, required)
+- `image` (file, required)
+
+**Response Body:** created product object
+
+---
+
+### Fetch All Products (no pagination)
+***http method:*** `GET`  
+**Endpoint:** `/api/products/allproducts`
+
+**Response Body:** array of product objects (may include populated category)
+
+---
+
+### Top Products
+***http method:*** `GET`  
+**Endpoint:** `/api/products/top`
+
+**Response Body:** array of top-rated product objects
+
+---
+
+### New Products
+***http method:*** `GET`  
+**Endpoint:** `/api/products/new`
+
+**Response Body:** array of recently added product objects
+
+---
+
+### Add Product Review
+***http method:*** `POST`  
+**Endpoint:** `/api/products/:id/reviews`  
+**Headers:**  
+- **Authorization:** Bearer token (required)
+
+**Request Body:**
+```json
+{
+  "rating": 5,
+  "comment": "Great product"
+}
+```
+
+**Response Body:**
+```json
+{
+  "message": "Reviews added"
+}
+```
+
+---
+
+### Get Product by ID
+***http method:*** `GET`  
+**Endpoint:** `/api/products/:id`
+
+**Response Body:** product object
+
+---
+
+### Update Product (Admin Only)
+***http method:*** `PUT`  
+**Endpoint:** `/api/products/:id`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)  
+**Content-Type:** multipart/form-data (use ExpressFormidable)
+
+**Request (form-data):** same fields as Create Product
+
+**Response Body:** updated product object
+
+---
+
+### Delete Product (Admin Only)
+***http method:*** `DELETE`  
+**Endpoint:** `/api/products/:id`  
+**Headers:**  
+- **Authorization:** Bearer token (required, admin only)
+
+**Response Body:** deleted product object or
+```json
+{ "message": "Product deleted sucessfully ✅" }
 ```

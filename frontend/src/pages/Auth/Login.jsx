@@ -32,14 +32,16 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setEmail("");
-    setPassword("");
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredientials({ ...res }));
       toast.success("Login Successful");
+      
+      setEmail("");
+      setPassword("");
+
     } catch (error) {
-      toast.error(error?.data?.message);
+      toast.error(error?.data?.message || "Please fill all fields");
     }
   };
 
@@ -71,7 +73,7 @@ const Login = () => {
                 className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm"
                 type="email"
                 id="email"
-                required
+                // required
                 placeholder="Enter your email"
               />
             </div>
@@ -89,7 +91,7 @@ const Login = () => {
                 className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
                 type={showPassword ? "text" : "password"}
                 id="password"
-                required
+                // required
                 placeholder="Enter your password"
               />
             </div>

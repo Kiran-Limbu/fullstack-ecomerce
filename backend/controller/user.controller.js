@@ -39,6 +39,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
+        res.status(400)
         throw new Error("All filed are required !");
     }
 
@@ -65,7 +66,7 @@ const loginUser = async (req, res) => {
         email: allreadyExistUser.email,
         isAdmin: allreadyExistUser.isAdmin
     });
-    return; //it stop the code right before
+    // return; it stop the code right before
 };
 
 const logoutUser = asyncHandler(async (req, res) => {

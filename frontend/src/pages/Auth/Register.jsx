@@ -48,7 +48,7 @@ const Register = () => {
         navigate(redirect);
         toast.success("Register User Successful");
       } catch (error) {
-        toast.error(error?.data?.message || error.massage);
+        toast.error(error?.data?.message || "Please fill all fields");
       }
     }
   };
@@ -77,7 +77,7 @@ const Register = () => {
                   className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
                   type="text"
                   id="name"
-                  required
+                  // required
                   placeholder="Enter user name"
                 />
               </div>
@@ -94,7 +94,7 @@ const Register = () => {
                   className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm"
                   type="email"
                   id="email"
-                  required
+                  // required
                   placeholder="Enter your email"
                 />
               </div>
@@ -111,7 +111,7 @@ const Register = () => {
                   className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  required
+                  // required
                   placeholder="Enter your password"
                 />
               </div>
@@ -128,7 +128,7 @@ const Register = () => {
                   className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
                   type={showPassword ? "text" : "password"}
                   id="confirmPassword"
-                  required
+                  // required
                   placeholder="Enter confirm password"
                 />
                 {/* Eye button to show and hide pass */}

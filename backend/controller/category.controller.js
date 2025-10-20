@@ -79,7 +79,7 @@ const listCategory = asyncHandler(async (req, res) => {
 const getCategoryById = asyncHandler(async (req, res) => {
     try {
         const categoryId = req.params.id;
-        
+
         const category = await categoryModel.findOne({ _id: categoryId });
         res.json(category);
 
