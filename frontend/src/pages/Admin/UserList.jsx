@@ -54,7 +54,7 @@ const UserList = () => {
   };
 
   return (
-    <div className="p-5 relative top-30">
+    <div className="p-7 w-full">
       <h1 className="md:text-3xl text-lg font-semibold">Users</h1>
 
       {isLoading ? (
@@ -62,20 +62,20 @@ const UserList = () => {
           <ClipLoader size={70} />
         </div>
       ) : (
-        <div className="px-5 py-3">
-          <table className="w-full px-3 py-5">
-            <thead>
+        <div className="px-5 py-7">
+          <table className="w-full pt-6">
+            <thead className="text-center font-semibold text-md md:text-xl">
               <tr>
-                <th className="font-semibold text-md md:text-xl text-left">
+                <th>
                   ID
                 </th>
-                <th className="font-semibold text-md md:text-xl text-left">
+                <th>
                   NAME
                 </th>
-                <th className="font-semibold text-md md:text-xl text-left">
+                <th>
                   EMAIL
                 </th>
-                <th className="font-semibold text-md md:text-xl text-left">
+                <th>
                   ADMIN
                 </th>
               </tr>

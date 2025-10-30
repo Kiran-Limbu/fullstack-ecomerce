@@ -39,7 +39,6 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        res.status(400)
         throw new Error("All filed are required !");
     }
 
@@ -55,7 +54,7 @@ const loginUser = async (req, res) => {
     );
 
     if (!isPasswordValid) {
-        return res.status(401).json({ message: "Invalid password" });
+        return res.status(401).json({ message: "Invalid email or password" });
     }
 
     generateToken(res, allreadyExistUser._id);

@@ -20,6 +20,7 @@ import UserProctedRoute from "./components/procted-routes/UserProctedRoute.jsx";
 import AdminProtectedRoute from "./components/procted-routes/AdminProtectedRoute.jsx";
 import UserList from "./pages/Admin/UserList.jsx";
 import CategoryList from "./pages/Admin/CategoryList.jsx";
+import ProductList from "./pages/Admin/ProductList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,7 +38,9 @@ const router = createBrowserRouter(
     <Route path="/admin" element={<AdminProtectedRoute />}>
     <Route path="userlist" element={<UserList />} />
     <Route path="categorylist" element={<CategoryList />} />
+    <Route path="productlist" element={<ProductList />} />
     </Route>
+
 
   </Route>
   )

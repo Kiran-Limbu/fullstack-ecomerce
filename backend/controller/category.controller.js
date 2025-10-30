@@ -12,7 +12,7 @@ const createCategory = asyncHandler(async (req, res) => {
         const existingCategory = await categoryModel.findOne({ name });
 
         if (existingCategory) {
-            return res.json({ errro: "Already exist product" })
+            return res.json({ error: "Already exist product" })
         }
 
         const category = await categoryModel.create({ name });
@@ -68,7 +68,8 @@ const deleteCategory = asyncHandler(async (req, res) => {
 const listCategory = asyncHandler(async (req, res) => {
     try {
         const allcategory = await categoryModel.find({});
-        return res.status(200).json(allcategory)
+
+        return res.status(200).json(allcategory);
 
     } catch (error) {
         console.log(error);
@@ -80,7 +81,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
     try {
         const categoryId = req.params.id;
 
-        const category = await categoryModel.findOne({ _id: categoryId });
+        const category = await categoryModel.findOne({ id: categoryId });
         res.json(category);
 
     } catch (error) {

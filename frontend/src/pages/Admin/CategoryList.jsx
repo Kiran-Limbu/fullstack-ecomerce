@@ -25,7 +25,6 @@ const CategoryList = () => {
 
     if (!name) {
       toast.error("Category name is required");
-      return;
     }
 
     try {
@@ -55,13 +54,14 @@ const CategoryList = () => {
         categoryId: selectedCategory._id,
         updatedCategory: {
           name: updateName,
-        }}).unwrap();
+        },
+      }).unwrap();
 
       if (result.error) {
         toast.error(result.error);
       } else {
         toast.success(`${result.name} is updated`);
-        setSelectedCategory(null);        
+        setSelectedCategory(null);
         setUpdateName("");
         setModelVisible(false);
       }
@@ -127,7 +127,7 @@ const CategoryList = () => {
           handleDelete={handleDeleteCategory}
         />
       </CategoryModel>
-      </div>
+    </div>
   );
 };
 
