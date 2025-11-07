@@ -65,8 +65,12 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
     try {
         const product = await productModel.findByIdAndDelete(req.params.id);
-        res.json(product);
-        return res.status(200).json({ message: "Product deleted sucessfully ✅" });
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        
+        res.status(200).json({ message: "Product deleted sucessfully ✅" });
 
     } catch (error) {
         console.error(error);
@@ -185,7 +189,7 @@ const fetchTopProduct = asyncHandler(async (req, res) => {
 
 const fetchNewProduct = asyncHandler(async (req, res) => {
     try {
-        const products = await productModel.find({}).sort({_id: -1 }).limit(6);
+        const products = await productModel.find({}).sort({ _id: -1 }).limit(6);
         res.json(products);
     } catch (error) {
         console.error(error)

@@ -8,6 +8,7 @@ import {
 } from "../../redux/api/categoryApiSlice";
 import CategoryForm from "../../components/category/CategoryForm";
 import CategoryModel from "../../components/category/CategoryModel";
+import AdminMenu from "./AdminMenu";
 
 const CategoryList = () => {
   const { data: categories } = useGetAllCategoryQuery();
@@ -89,6 +90,9 @@ const CategoryList = () => {
   };
   return (
     <div className="w-full absolute top-1/5 pl-10 pr-10">
+      <div className="flex justify-end">
+        <AdminMenu />
+      </div>
       <div className="p-2">
         <h1 className="text-xl font-semibold ">Manage Category</h1>
         <CategoryForm
