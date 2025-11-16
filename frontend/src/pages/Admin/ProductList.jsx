@@ -43,14 +43,14 @@ const ProductList = () => {
      const { data } = await createProduct(productData);
 
      if(data.error){
-      toast.error(error?.data?.message || "Product create failed. Try Again");
+      toast.error("Product create failed. Try Again");
      }else {
       toast.success(`${data.name} is created`);
       navigate("/");
      }
 
     } catch (error) {
-      toast.error(error?.data?.message || "Product create failed. Try Again");
+      toast.error("Product create failed. Try Again" || error.error);
     }
 
   };
@@ -78,7 +78,7 @@ const ProductList = () => {
         <AdminMenu />
         </div>
         <div className="px-7 py-5">
-          <h1 className="md:text-3xl text-green-500 capitalize text-2xl font-semibold">Create Product :</h1>
+          <h1 className="md:text-3xl capitalize text-2xl font-semibold">Create Product :</h1>
         </div>
         {imageUrl && (
           <div className="text-center">
@@ -174,7 +174,7 @@ const ProductList = () => {
                 onChange={(e) => setCategory(e.target.value)}
               >
                 {categories?.map((category) => (
-                  <option key={category._id} value={category._id}>
+                  <option key={category._id} value={category._id} >
                     {category.name}
                   </option>
                 ))}

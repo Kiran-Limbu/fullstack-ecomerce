@@ -16,8 +16,8 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    const filetypes = /jpeg|png|webp|jpg/;
-    const minetypes = /image\/jpeg|image\/png|image\/webp\/jpg/;
+    const filetypes = /jpeg|jpg|png|webp|gif|bmp|svg|tiff|avif/;
+    const minetypes = /image\/jpeg|image\/png|image\/webp|image\/gif|image\/bmp|image\/svg\+xml|image\/tiff|image\/avif/;
 
     const extname = path.extname(file.originalname).toLowerCase();
     const minetype = file.mimetype;

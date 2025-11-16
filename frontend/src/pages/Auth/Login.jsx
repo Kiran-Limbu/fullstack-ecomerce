@@ -36,17 +36,16 @@ const Login = () => {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredientials({ ...res }));
       toast.success("Login Successful");
-      
+
       setEmail("");
       setPassword("");
-
     } catch (error) {
       toast.error(error?.data?.message || "Please fill all fields");
     }
   };
 
   return (
-    <div className="w-full h-screen flex justify-between items-center fixed top-0 md:top-1/9 bg-zinc-800 px-5 text-white">
+    <div className="w-full min-h-screen flex justify-between items-center bg-zinc-800 px-5 text-white">
       <div className="md:w-1/2 w-0 md:flex hidden">
         <img
           className="w-full h-full object-cover overflow-hidden rounded-xl"
@@ -73,31 +72,31 @@ const Login = () => {
                 className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm"
                 type="email"
                 id="email"
-                // required
                 placeholder="Enter your email"
               />
             </div>
 
-            <div className="div">
+            <div className="relative">
               <label
                 htmlFor="passwword"
                 className="block text-md font-semibold mb-2"
               >
                 Password
               </label>
+
+
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
                 type={showPassword ? "text" : "password"}
                 id="password"
-                // required
                 placeholder="Enter your password"
               />
-            </div>
-            {/* Eye button to show and hide pass */}
+
+              {/* Eye button to show and hide pass */}
             <button
-              className="absolute top-[52%] md:top-[54%] right-[15%] cursor-pointer"
+              className="absolute top-11 right-5 cursor-pointer"
               type="button"
               onClick={() => setShowPassword(!showPassword)}
             >
@@ -107,6 +106,7 @@ const Login = () => {
                 <RxEyeClosed size={21} />
               )}
             </button>
+            </div>
             <button
               disabled={isLoading}
               type="submit"

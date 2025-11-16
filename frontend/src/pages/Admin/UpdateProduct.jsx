@@ -12,7 +12,7 @@ import AdminMenu from "./AdminMenu";
 
 const UpdateProduct = () => {
   const params = useParams();
-  const { data: productData } = useGetProductByIdQuery(params._id);
+  const { data: productData, refetch} = useGetProductByIdQuery(params._id);
 
   const [image, setImage] = useState(productData?.image || "");
   const [imageUrl, setImageUrl] = useState(null);
@@ -43,7 +43,8 @@ const UpdateProduct = () => {
       setStock(productData.countInStock);
       setQuantity(productData.quantity);
     }
-  }, [productData]);
+    refetch()
+  }, [productData, refetch]);
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
@@ -53,7 +54,7 @@ const UpdateProduct = () => {
       const res = await uploadProductImage(formData).unwrap();
       toast.success("Item added sucessfully");
       setImage(res.image);
-      setImage(res.image);
+      setImageUrl(res.image);
     } catch (error) {
       toast.error(data?.error?.meaasge || "Somethig went wrong");
     }
@@ -79,6 +80,7 @@ const UpdateProduct = () => {
       } else {
         toast.success("Product sucessfully updated");
         navigate("/admin/allproductlist");
+        refetch();
       }
     } catch (error) {
       toast.error(
@@ -96,6 +98,7 @@ const UpdateProduct = () => {
       if (!answer) return;
 
       const { data } = await deleteProduct(params._id);
+       refetch();
       toast.success(data?.message);
       navigate("/admin/allproductlist");
     } catch (error) {
@@ -112,7 +115,7 @@ const UpdateProduct = () => {
           <AdminMenu />
         </div>
         <div className="px-7 py-5">
-          <h1 className="md:text-3xl text-green-500 capitalize text-2xl font-semibold">
+          <h1 className="md:text-3xl capitalize text-2xl font-semibold">
             Update or Delete Product :
           </h1>
         </div>
@@ -121,7 +124,7 @@ const UpdateProduct = () => {
             <img
               src={imageUrl}
               alt="product"
-              className="object-cover w-1/2 h-[50vh] mx-auto overflow-hidden rounded-md"
+              className="object-cover w-1/2 h-[50vh] mx-auto rounded-md"
             />
           </div>
         )}

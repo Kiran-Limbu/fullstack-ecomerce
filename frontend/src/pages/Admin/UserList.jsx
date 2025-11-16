@@ -53,6 +53,14 @@ const UserList = () => {
     }
   };
 
+  if (!users || users?.length === 0) {
+    return (
+      <div className="text-2xl text-red-600 font-semibold capitalize flex justify-center pt-[20vw]">
+        Sorry ! no user available
+      </div>
+    );
+  }
+
   return (
     <div className="p-7 w-full">
       <h1 className="md:text-3xl text-lg font-semibold">Users</h1>
@@ -66,18 +74,10 @@ const UserList = () => {
           <table className="w-full pt-6">
             <thead className="text-center font-semibold text-md md:text-xl">
               <tr>
-                <th>
-                  ID
-                </th>
-                <th>
-                  NAME
-                </th>
-                <th>
-                  EMAIL
-                </th>
-                <th>
-                  ADMIN
-                </th>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>ADMIN</th>
               </tr>
             </thead>
             <tbody>

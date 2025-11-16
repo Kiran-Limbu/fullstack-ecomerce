@@ -16,7 +16,7 @@ import { FaProductHunt } from "react-icons/fa6";
 import { TbCategoryPlus } from "react-icons/tb";
 import { TbBorderSides } from "react-icons/tb";
 import { RiUserSearchFill } from "react-icons/ri";
-import { AnimatePresence, motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 const Navigation = () => {
   const { userInfo } = useSelector(state => state.auth);
@@ -208,22 +208,22 @@ const Navigation = () => {
         </AnimatePresence>
 
         {/* mobile view */}
-        <div className="flex justify-around bg-zinc-700 w-full py-4 items-center gap-9 text-white text-center md:hidden fixed bottom-0 z-999">
+        <div className="flex justify-around bg-zinc-700 w-full py-2 items-center gap-9 text-white text-center md:hidden fixed bottom-0 z-999">
           <Link to="/shop">
             <span className="truncate font-semibold text-md flex flex-col items-center justify-center text-center hover:scale-103">
-              <AiOutlineShopping className="hover:opacity-100" size={27} />
+              <AiOutlineShopping className="hover:opacity-100" size={20} />
               Shoping
             </span>
           </Link>
           <Link to="/cart">
             <span className="truncate font-semibold text-md flex flex-col items-center justify-center text-center hover:scale-103">
-              <AiOutlineShoppingCart className="hover:opacity-100" size={27} />
+              <AiOutlineShoppingCart className="hover:opacity-100" size={20} />
               Cart
             </span>
           </Link>
           <Link to="/favorite">
             <span className="truncate font-semibold text-md flex flex-col items-center justify-center text-center hover:scale-103">
-              <AiOutlineHeart className="hover:opacity-100" size={27} />
+              <AiOutlineHeart className="hover:opacity-100" size={20} />
               Favourite
             </span>
           </Link>

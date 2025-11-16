@@ -53,7 +53,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="w-full h-screen flex justify-between items-center fixed -top-1/17 md:top-1/11 bg-zinc-800 px-5 text-white">
+    <div className="w-full min-h-screen flex justify-between items-center bg-zinc-800 px-5 text-white">
         <div className="md:w-1/2 w-0 md:flex hidden">
           <img className="h-full w-full object-cover overflow-hidden rounded-xl" src={authImg} alt="authImg" />
         </div>

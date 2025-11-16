@@ -179,7 +179,7 @@ const addProductReviews = asyncHandler(async (req, res) => {
 
 const fetchTopProduct = asyncHandler(async (req, res) => {
     try {
-        const products = await productModel.find({}).sort({ rating: -1 }).limit(5);
+        const products = await productModel.find({}).sort({ rating: -1 }).limit(4);
         res.json(products);
     } catch (error) {
         console.error(error);

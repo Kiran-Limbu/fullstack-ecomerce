@@ -112,7 +112,7 @@ const CategoryList = () => {
                   setSelectedCategory(category),
                   setUpdateName(category.name);
               }}
-              className="bg-zinc-800 text-white border-none rounded-md px-5 py-3 m-3 cursor-pointer hover:opacity-85 focus:outline-none"
+              className="bg-zinc-600 text-white border-none rounded-md px-5 py-3 m-3 cursor-pointer font-semibold hover:opacity-85 focus:outline-none"
             >
               {category.name}
             </button>

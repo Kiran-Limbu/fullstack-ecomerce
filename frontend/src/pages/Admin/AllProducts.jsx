@@ -24,6 +24,7 @@ const AllProducts = () => {
     );
   }
 
+  
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
@@ -39,7 +40,7 @@ const AllProducts = () => {
               Sorry ! no product is available{" "}
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-3 xl:grid-cols-5 sm:grid-cols-2 grid-col-1 gap-5">
               {products?.map((product) => (
                 <div
                   key={product._id}
@@ -49,8 +50,8 @@ const AllProducts = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[40vw] h-[20vw] md:w-full object-cover overflow-hidden rounded-md"
-                    />
+                      className="w-full md:h-[20vw] h-[40vh] md:w-full sm:w-[40vw] object-cover overflow-hidden rounded-md"
+                      />
                     <div className="px-2 capitalize font-semibold text-xl md:text-md">
                       <h1>{product.name}</h1>
                     </div>
@@ -60,10 +61,10 @@ const AllProducts = () => {
                       </span>
                     </div>
                     <div className="px-3 font-md truncate">
-                      <span>{product.description}</span>
+                      <span>{product.description.substring(0, 35)}....</span>
                     </div>
                     <div className="px-3 font-md">
-                      <span>$ {product.price}</span>
+                      <span>$ {product.price.toFixed(2)}</span>
                     </div>
                     <div className="px-3">
                       <Link

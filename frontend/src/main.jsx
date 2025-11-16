@@ -23,14 +23,15 @@ import CategoryList from "./pages/Admin/CategoryList.jsx";
 import ProductList from "./pages/Admin/ProductList.jsx";
 import UpdateProduct from "./pages/Admin/UpdateProduct.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
+import ProductPage from "./pages/Products/ProductPage.jsx";
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}> 
-    
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route index={true} path="/" element={<ProductPage />} />
 
   {/*User protected route */}
     <Route path="" element={<UserProctedRoute />}>
