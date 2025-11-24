@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import HeartIcon from './HeartIcon'
 
 const FlashSaleProduct = ({product}) => {
   return (
         <div className="h-full w-full relative">
-            <Link to={`/product/${product._id}`}>
+            <HeartIcon product={product} />
+            <Link className='p-5' to={`/product/${product._id}`}>
             <img 
             className='md:w-[30vw] h-[40vh] w-full object-cover overflow-hidden rounded-md'
             src={product.image} alt={product.name} />

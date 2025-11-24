@@ -17,6 +17,7 @@ import { TbCategoryPlus } from "react-icons/tb";
 import { TbBorderSides } from "react-icons/tb";
 import { RiUserSearchFill } from "react-icons/ri";
 import { motion, AnimatePresence } from "motion/react";
+import FavoritesCount from "../../components/product/FavoritesCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector(state => state.auth);
@@ -40,7 +41,7 @@ const Navigation = () => {
   };
 
   return (
-      <div className="bg-zinc-300 px-3 py-6 w-full flex items-center justify-around sticky top-0 z-999">
+      <div className="bg-zinc-300 px-3 py-6 w-full flex items-center justify-around sticky top-0 z-[999]">
         {/* header element */}
         <div className="px-2 hover:opacity-70">
           <Link to="/">
@@ -77,6 +78,7 @@ const Navigation = () => {
               <AiOutlineHeart className="hover:opacity-100" size={27} />
               Favourite
             </span>
+            <FavoritesCount />
           </Link>
         </div>
         {/* login and register */}
@@ -226,6 +228,7 @@ const Navigation = () => {
               <AiOutlineHeart className="hover:opacity-100" size={20} />
               Favourite
             </span>
+            <FavoritesCount />
           </Link>
         </div>
       </div>

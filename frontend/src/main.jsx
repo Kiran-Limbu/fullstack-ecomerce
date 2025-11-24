@@ -24,6 +24,8 @@ import ProductList from "./pages/Admin/ProductList.jsx";
 import UpdateProduct from "./pages/Admin/UpdateProduct.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
 import ProductPage from "./pages/Products/ProductPage.jsx";
+import FavoritePage from "./pages/Products/FavoritePage.jsx";
+import ProductDetails from "./pages/Products/ProductDetails.jsx";
 
 
 const router = createBrowserRouter(
@@ -32,6 +34,8 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route index={true} path="/" element={<ProductPage />} />
+      <Route path="/favorite" element={<FavoritePage />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
 
   {/*User protected route */}
     <Route path="" element={<UserProctedRoute />}>

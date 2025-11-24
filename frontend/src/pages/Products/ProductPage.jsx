@@ -7,10 +7,11 @@ import FlashSaleProduct from "../../components/product/FlashSaleProduct";
 const ProductPage = () => {
   const { keyword } = useParams();
   const { data, isLoading, isError } = useGetProductQuery({ keyword });
+
   
   if (isLoading) {
       return (
-        <div className="flex items-center justify-center pt-[20vw]">
+        <div className="flex items-center justify-center pt-[20vw] h-screen w-full opacity-80">
           <ClipLoader size={70} />
         </div>
       );
@@ -28,10 +29,13 @@ const ProductPage = () => {
     <div className="w-full min-h-screen">
       {!keyword ? <HeaderProduuct /> : null}
           <div className="flex items-center justify-around pt-7">
+            <div className="flex items-center gap-7">
+              <div className="w-2 h-9 rounded-md bg-zinc-500"></div>
           <h1 className="md:text-4xl text-2xl capitalize font-semibold">
             flash Sale
           </h1>
-          <Link className="px-4 py-3 hover:opacity-80 font-semibold bg-zinc-600 rounded-md" to="/shop">Shop</Link>
+            </div>
+          <Link className="px-7 py-3 hover:opacity-80 font-semibold bg-zinc-600 rounded-md" to="/shop">Shop</Link>
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 px-7 py-9">
           {data.products.map((product) =>(

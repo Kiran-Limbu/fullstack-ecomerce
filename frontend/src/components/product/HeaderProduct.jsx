@@ -8,7 +8,7 @@ const HeaderProduuct = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center pt-[20vw]">
+      <div className="flex items-center justify-center pt-[20vw] h-screen w-full opacity-80">
         <ClipLoader size={70} />
       </div>
     );
