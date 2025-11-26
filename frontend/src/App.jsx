@@ -8,7 +8,7 @@ const App = () => {
     <>
     <ToastContainer />
     <Navigation />
-    <main className='w-full min-h-screen bg-zinc-800 text-white'>
+    <main className='w-full min-h-screen bg-zinc-800'>
       <Outlet />
     </main>
     </>

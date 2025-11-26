@@ -40,9 +40,9 @@ const HeartIcon = ({ product }) => {
     <div className="absolute bottom-1/2 right-10 top-9 z-99 ">
       <button onClick={toggleFavorites} className="cursor-pointer">
         {isFavorites ? (
-          <MdDeleteOutline className="text-red-700 " size={20} />
+          <MdDeleteOutline className="text-red-700 " size={30} />
         ) : (
-          <FaRegHeart className="text-white" size={20} />
+          <FaRegHeart className="text-white" size={30} />
         )}
       </button>
     </div>

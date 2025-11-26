@@ -28,7 +28,7 @@ const FavoritePage = () => {
     );
   }
   return (
-    <div className="px-2 py-5">
+    <div className="px-2 py-5 text-white">
       <div className="px-5 py-6">
         <h1 className="font-semibold md:text-2xl text-md">
           Your Favorites ({favorites.length})

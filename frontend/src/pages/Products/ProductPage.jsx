@@ -26,7 +26,7 @@ const ProductPage = () => {
     }
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen text-white">
       {!keyword ? <HeaderProduuct /> : null}
           <div className="flex items-center justify-around pt-7">
             <div className="flex items-center gap-7">
