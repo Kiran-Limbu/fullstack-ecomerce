@@ -18,7 +18,6 @@ import Register from "./pages/Auth/Register.jsx";
 import Profile from "./pages/User/Profile.jsx";
 import UserProctedRoute from "./components/procted-routes/UserProctedRoute.jsx";
 import AdminProtectedRoute from "./components/procted-routes/AdminProtectedRoute.jsx";
-import UserList from "./pages/Admin/UserList.jsx";
 import CategoryList from "./pages/Admin/CategoryList.jsx";
 import ProductList from "./pages/Admin/ProductList.jsx";
 import UpdateProduct from "./pages/Admin/UpdateProduct.jsx";
@@ -26,6 +25,7 @@ import AllProducts from "./pages/Admin/AllProducts.jsx";
 import ProductPage from "./pages/Products/ProductPage.jsx";
 import FavoritePage from "./pages/Products/FavoritePage.jsx";
 import ProductDetails from "./pages/Products/ProductDetails.jsx";
+import Cart from "./pages/Cart.jsx";
 
 
 const router = createBrowserRouter(
@@ -36,15 +36,16 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<ProductPage />} />
       <Route path="/favorite" element={<FavoritePage />} />
       <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/cart" element={<Cart />} />
+      {/* <Route path="/shipping" element={<ProductShipping />} /> */}
 
-  {/*User protected route */}
+  {/* User protected route */}
     <Route path="" element={<UserProctedRoute />}>
       <Route path="/profile" element={<Profile />} />
      </Route>
 
     {/* Admin protected routes */}
     <Route path="/admin" element={<AdminProtectedRoute />}>
-    <Route path="userlist" element={<UserList />} />
     <Route path="categorylist" element={<CategoryList />} />
     <Route path="productlist" element={<ProductList />} />
     <Route path="allproductlist" element={<AllProducts />} />

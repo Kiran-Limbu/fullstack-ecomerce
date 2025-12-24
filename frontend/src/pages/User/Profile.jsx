@@ -52,7 +52,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-full opacity-85 ">
+    <div className="w-full opacity-85 text-white">
       <div className="fixed top-25 left-0 md:left-[25%] w-full md:w-1/2 px-5 py-6 rounded-md">
         {/* heading tag */}
         <div className="md:text-2xl text-md font-semibold pb-4 text-green-400">
@@ -121,13 +121,13 @@ const Profile = () => {
           <div className="mt-3 flex justify-between">
             <button
               type="submit"
-              className="px-5 py-3 text-white font-semibold rounded-md cursor-pointer hover:opacity-95 bg-zinc-800"
+              className="px-5 py-3 font-semibold rounded-md cursor-pointer hover:opacity-95 bg-green-600"
             >
               {loadingUpdateProfile ? <ClipLoader size={19} /> : "Update"}
             </button>
             <Link
               to="/user-order"
-              className="px-5 py-3 text-white font-semibold rounded-md hover:opacity-95 bg-zinc-800"
+              className="px-5 py-3 font-semibold rounded-md hover:opacity-95 bg-zinc-500"
             >
               Order
             </Link>

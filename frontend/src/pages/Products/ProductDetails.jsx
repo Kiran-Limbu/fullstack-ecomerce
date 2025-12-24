@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -15,10 +15,13 @@ import { PiClockCountdownFill } from "react-icons/pi";
 import { RiTimeFill } from "react-icons/ri";
 import Rating from "../../components/product/Rating";
 import ProductReview from "../../components/review/ProductReview";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -36,10 +39,9 @@ const ProductDetails = () => {
   const [createReview, { isLoading: loadingProductRewiew }] =
     useCreateReviewMutation();
 
-  console.log(product);
-
   const addToCartHandler = () => {
-    console.log("haha");
+    dispatch(addToCart({...product, qty}))
+    navigate("/cart");
   };
 
    const submitHandler = async (e) => {

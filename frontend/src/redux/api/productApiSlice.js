@@ -30,7 +30,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
 
         getProductDetails: builder.query({
-            query: (productId) => ({
+            query: (productId) => ({  
                 url: `${PRODUCT_URL}/${productId}`
             }),
             keepUnusedDataFor: 5,

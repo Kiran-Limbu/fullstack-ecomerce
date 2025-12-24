@@ -26,7 +26,7 @@ const AllProducts = () => {
 
   
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full text-white">
       <div className="flex flex-col">
         <div className="p-4">
           <div className="flex justify-end">
@@ -63,12 +63,12 @@ const AllProducts = () => {
                     <div className="px-3 font-md truncate">
                       <span>{product.description.substring(0, 35)}....</span>
                     </div>
-                    <div className="px-3 font-md">
+                    <div className="px-3 font-md text-red-500">
                       <span>$ {product.price.toFixed(2)}</span>
                     </div>
                     <div className="px-3">
                       <Link
-                        className=" flex items-center gap-5 border-none hover:opacity-95 py-2 px-5 rounded-md bg-zinc-700"
+                        className=" flex items-center gap-5 font-semibold border-none hover:opacity-95 py-2 px-5 rounded-md bg-zinc-700"
                         to={`/admin/product/update/${product._id}`}
                       >
                         Update Product

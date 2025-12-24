@@ -50,7 +50,7 @@ const ProductList = () => {
      }
 
     } catch (error) {
-      toast.error("Product create failed. Try Again" || error.error);
+      toast.error(error.error || "Product create failed. Try Again");
     }
 
   };
