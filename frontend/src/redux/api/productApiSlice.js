@@ -30,7 +30,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
 
         getProductDetails: builder.query({
-            query: (productId) => ({  
+            query: (productId) => ({
                 url: `${PRODUCT_URL}/${productId}`
             }),
             keepUnusedDataFor: 5,
@@ -54,7 +54,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
 
         uploadProductImage: builder.mutation({
-            query: (data) =>({
+            query: (data) => ({
                 url: `${UPLOAD_URL}`,
                 method: "POST",
                 body: data
@@ -87,6 +87,15 @@ export const productApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5,
         }),
 
+        getSearchProducts: builder.query({
+            query: ({ keyword }) => ({
+                url: `${PRODUCT_URL}`,
+                params: { keyword },
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ["Products"],
+        })
+
     }),
 });
 
@@ -102,5 +111,6 @@ export const {
     useDeleteProductMutation,
     useGetTopProductQuery,
     useGetNewProductQuery,
-    useUploadProductImageMutation
+    useUploadProductImageMutation,
+    useGetSearchProductsQuery
 } = productApiSlice;

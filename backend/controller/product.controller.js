@@ -197,6 +197,23 @@ const fetchNewProduct = asyncHandler(async (req, res) => {
     }
 });
 
+const serchProducts = asyncHandler(async (req, res) =>{
+    try {
+        const keyword = req.query.keyword ? {
+            name: {
+                $regex: req.query.keyword,
+                $options: "i"
+            }
+        } : [];
+        const products = await productModel.find({name: keyword});
+        res.json(products);
+
+    } catch (error) {
+        console.error(error);
+        res.status(400).message({error: "Server ERROR"});
+    }
+})
+
 
 
 export {
@@ -208,5 +225,6 @@ export {
     fetchAllProduct,
     addProductReviews,
     fetchTopProduct,
-    fetchNewProduct
+    fetchNewProduct,
+    serchProducts
 }

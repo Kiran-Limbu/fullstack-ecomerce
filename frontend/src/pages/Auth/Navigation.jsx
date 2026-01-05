@@ -1,6 +1,5 @@
 import {
   AiOutlineHeart,
-  AiOutlineSearch,
   AiOutlineShopping,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
@@ -19,6 +18,7 @@ import { RiUserSearchFill } from "react-icons/ri";
 import { motion, AnimatePresence } from "motion/react";
 import FavoritesCount from "../../components/nav/FavoritesCount";
 import CartItemsCount from "../../components/nav/CartItemsCount";
+import SerchProduct from "../../components/search/SerchProduct";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -46,28 +46,17 @@ const Navigation = () => {
       {/* header element */}
       <div className="px-2 hover:opacity-70">
         <Link to="/">
-          <h1 className="font-bold text-md md:text-[2em]">STORE</h1>
+          <h1 className="font-bold text-lg md:text-[2em]">STORE</h1>
         </Link>
       </div>
+      
       {/* input element */}
-      <div className="flex items-center justify-center">
-        <input
-          className="w-[30vw] px-7 bg-white py-2 font-semibold rounded-md border-[1px] border-zinc-200 rounded-r-none"
-          type="text"
-          placeholder="Search in store"
-        />
-        <span className="px-2  text-md md:px-3 py-2 rounded-md cursor-pointer bg-zinc-200 rounded-l-none  hover:opacity-70">
-          <AiOutlineSearch size={26} />
-        </span>
-      </div>
+     <SerchProduct />
+
+
       {/* desktop view */}
       <div className="justify-between items-center gap-9  text-center hidden md:flex">
-        <Link to="/shop">
-          <span className="truncate font-semibold text-md flex flex-col items-center text-center hover:scale-103">
-            <AiOutlineShopping className="hover:opacity-100" size={27} />
-            Shoping
-          </span>
-        </Link>
+       
         <Link to="/cart">
         <div className="relative">
           <span className="truncate font-semibold text-md flex flex-col items-center text-center hover:scale-103">
@@ -210,12 +199,7 @@ const Navigation = () => {
 
       {/* mobile view */}
       <div className="flex justify-around bg-zinc-700 w-full py-2 items-center gap-9 text-white text-center md:hidden fixed bottom-0 z-999">
-        <Link to="/shop">
-          <span className="truncate font-semibold text-md flex flex-col items-center justify-center text-center hover:scale-103">
-            <AiOutlineShopping className="hover:opacity-100" size={20} />
-            Shoping
-          </span>
-        </Link>
+       
         <Link to="/cart">
           <span className="truncate font-semibold text-md flex flex-col items-center justify-center text-center hover:scale-103">
             <AiOutlineShoppingCart className="hover:opacity-100" size={20} />

@@ -36,7 +36,7 @@ const HeaderProduuct = () => {
                 />
               <div className="flex justify-between pt-2">
                 <p className="capitalize px-3 py-2 truncate">{product.name}</p>
-                <span className="px-2 py-2 bg-zinc-600 rounded-md">$ {product.price.toFixed(2)}</span>
+                <span className="px-3 py-2 bg-zinc-600 rounded-md">${product.price.toFixed(2)}</span>
               </div>
                 </Link>
             </div>

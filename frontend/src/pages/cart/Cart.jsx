@@ -1,7 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart } from "../redux/features/cart/cartSlice";
+import { addToCart, removeFromCart } from "../../redux/features/cart/cartSlice";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Cart = () => {
           Sorry ! No Product is Added,
           <Link
             className="text-red-500 hover:opacity-88 underline underline-offset-1"
-            to="/shop"
+            to="/"
           >
             Go To Shop
           </Link>
@@ -91,7 +91,7 @@ const Cart = () => {
                 <h1 className="text-xl">Cart Total</h1>
                 <p>Items: ({cartItems.length})</p>
                 <h2>
-                  Total Price : $
+                  Total Price : $   
                   {cartItems
                     .reduce((acc, item) => acc + item.qty * item.price, 0)
                     .toFixed(2)}

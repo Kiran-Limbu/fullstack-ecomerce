@@ -39,7 +39,6 @@ const AdminMenu = () => {
                 { name: "Create Category", path: "/admin/categorylist" },
                 { name: "Create Product", path: "/admin/productlist" },
                 { name: "All Product", path: "/admin/allproductlist" },
-                { name: "Manage Users", path: "/admin/userlist" },
                 { name: "Manage Order", path: "/admin/orderlist" },
               ].map((items, index) => (
                 <ul key={index} className="list-none font-semibold">

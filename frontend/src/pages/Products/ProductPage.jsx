@@ -35,7 +35,7 @@ const ProductPage = () => {
             flash Sale
           </h1>
             </div>
-          <Link className="px-7 py-3 hover:opacity-80 font-semibold bg-zinc-600 rounded-md" to="/shop">Shop</Link>
+          <Link className="px-7 py-3 hover:opacity-80 font-semibold bg-zinc-600 rounded-md" to="/favorite">Favorite</Link>
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 px-7 py-9">
           {data.products.map((product) =>(

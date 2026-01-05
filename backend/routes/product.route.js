@@ -10,7 +10,8 @@ import {
     fetchAllProduct,
     addProductReviews,
     fetchTopProduct,
-    fetchNewProduct
+    fetchNewProduct,
+    serchProducts
 } from "../controller/product.controller.js";
 import ExpressFormidable from "express-formidable";
 import { authAdmin, authUser } from "../middlewares/auth.middleware.js";
@@ -18,6 +19,7 @@ import { authAdmin, authUser } from "../middlewares/auth.middleware.js";
 
 router.route("/")
     .get(fetchProduct)
+    .get(serchProducts)
     .post(authUser, authAdmin, ExpressFormidable(), createProduct);
 
 router.route("/allproducts").get(fetchAllProduct);
@@ -32,7 +34,6 @@ router.route("/:id")
     .get(getProductById)
     .put(authUser, authAdmin, ExpressFormidable(), updateProduct)
     .delete(authUser, authAdmin, deleteProduct);
-
 
 
 export default router;

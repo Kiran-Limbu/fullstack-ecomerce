@@ -25,7 +25,8 @@ import AllProducts from "./pages/Admin/AllProducts.jsx";
 import ProductPage from "./pages/Products/ProductPage.jsx";
 import FavoritePage from "./pages/Products/FavoritePage.jsx";
 import ProductDetails from "./pages/Products/ProductDetails.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/cart/Cart.jsx";
+import SearchPage from "./components/search/SearchPage.jsx";
 
 
 const router = createBrowserRouter(
@@ -37,7 +38,7 @@ const router = createBrowserRouter(
       <Route path="/favorite" element={<FavoritePage />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
-      {/* <Route path="/shipping" element={<ProductShipping />} /> */}
+      <Route path="/search" element={<SearchPage />} />
 
   {/* User protected route */}
     <Route path="" element={<UserProctedRoute />}>

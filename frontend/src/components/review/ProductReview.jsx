@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../product/Rating";
 import { useGetTopProductQuery } from "../../redux/api/productApiSlice";
@@ -15,7 +14,7 @@ const ProductReview = ({
   comment,
   product,
 }) => {
-  const { data, isLoading } = useGetTopProductQuery();
+  const { isLoading } = useGetTopProductQuery();
 
   if (isLoading) {
     return (
@@ -101,7 +100,7 @@ const ProductReview = ({
             <p className="text-2xl font-semibold text-red-600">No Reviews</p>
           )}
           {product.reviews.map((review) => (
-            <div className="border-none rounded-md px-5 bg-zinc-900 w-full flex flex-col">
+            <div key={review._id} className="border-none rounded-md px-5 bg-zinc-900 w-full flex flex-col">
               <div key={review._id} className=" flex flex-col gap-3 py-5">
                 <div className="flex justify-between items-center">
                   <h1 className="text-xl">{review.name}</h1>

@@ -94,7 +94,7 @@ const CategoryList = () => {
         <AdminMenu />
       </div>
       <div className="p-2">
-        <h1 className="text-xl font-semibold ">Manage Category</h1>
+        <h1 className="text-2xl font-semibold text-white">Manage Category</h1>
         <CategoryForm
           value={name}
           setValue={setName}

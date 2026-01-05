@@ -48,7 +48,7 @@ const Register = () => {
         navigate(redirect);
         toast.success("Register User Successful");
       } catch (error) {
-        toast.error(error?.data?.message || "Please fill all fields");
+        toast.error(error?.data?.message || error.data);
       }
     }
   };
