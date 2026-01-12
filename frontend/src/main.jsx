@@ -22,7 +22,7 @@ import CategoryList from "./pages/Admin/CategoryList.jsx";
 import ProductList from "./pages/Admin/ProductList.jsx";
 import UpdateProduct from "./pages/Admin/UpdateProduct.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
-import ProductPage from "./pages/Products/ProductPage.jsx";
+import ProductPage from "./pages/Products/ProductMainPage.jsx";
 import FavoritePage from "./pages/Products/FavoritePage.jsx";
 import ProductDetails from "./pages/Products/ProductDetails.jsx";
 import Cart from "./pages/cart/Cart.jsx";

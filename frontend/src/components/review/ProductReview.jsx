@@ -34,7 +34,7 @@ const ProductReview = ({
           <form onSubmit={submitHandler}>
             <div className="px-3">
               <lable
-                htmlfor="rating"
+                htmlFor="rating"
                 className="font-semibold text-2xl block text-md py-3"
               >
                 Rating :

@@ -1,13 +1,12 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
 
 const SerchProduct = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = (e) => { 
     e.preventDefault();
 
     navigate(`/search?p=${keyword}`); 

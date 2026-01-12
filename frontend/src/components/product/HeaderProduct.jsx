@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners";
 import ProductSlider from "./ProductSlider";
 import { Link } from 'react-router-dom'
 
-const HeaderProduuct = () => {
+const HeaderProduct = () => {
   const { data: topProductData, isLoading, error } = useGetTopProductQuery();
 
   if (isLoading) {
@@ -24,7 +24,7 @@ const HeaderProduuct = () => {
 
   return (
     <div className="w-full h-full flex justify-around">
-      <div className="md:w-1/2 w-0 p-3">
+      <div className="md:w-[81vw] w-0 p-3">
         <div className="md:grid grid-cols-2 hidden">
           {topProductData?.map((product) => (
             <div key={product._id} className="py-3 px-2">
@@ -43,11 +43,11 @@ const HeaderProduuct = () => {
           ))}
         </div>
       </div>
-      <div className="md:w-[45vw] w-full overflow-hidden">
+      <div className="md:w-1/2 w-full overflow-hidden">
         <ProductSlider />
       </div>
     </div>
   );
 };
 
-export default HeaderProduuct;
+export default HeaderProduct;
