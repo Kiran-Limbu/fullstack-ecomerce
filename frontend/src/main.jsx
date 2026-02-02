@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 //rtk store
 import store from "./redux/store.js";
 
+
 //auth
 import Login from "./pages/Auth/Login.jsx";
 import Register from "./pages/Auth/Register.jsx";
@@ -38,7 +39,7 @@ const router = createBrowserRouter(
       <Route path="/favorite" element={<FavoritePage />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/search" element={<SearchPage />} />
+      <Route path="/search/" element={<SearchPage />} />
 
   {/* User protected route */}
     <Route path="" element={<UserProctedRoute />}>

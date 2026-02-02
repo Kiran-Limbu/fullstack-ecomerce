@@ -9,7 +9,7 @@ const SerchProduct = () => {
   const submitHandler = (e) => { 
     e.preventDefault();
 
-    navigate(`/search?p=${keyword}`); 
+    navigate(`/search?keyword=${keyword}`); 
   };
   return (
     <>

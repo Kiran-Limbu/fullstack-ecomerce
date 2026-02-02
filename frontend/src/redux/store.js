@@ -6,7 +6,6 @@ import favoriteReducer from "../redux/features/favorites/favoriteSlice";
 import { getFavoriteFromLocalStorage } from "../utils/localStorage";
 import cartSliceReducer from"./features/cart/cartSlice";
 import shopSliceReducer from "./features/shop/shopSlice";
-import productSerchReducer from "./features/product-search/productSerchSlice" 
 
 
 const initialFavorite = getFavoriteFromLocalStorage() || [];
@@ -19,7 +18,6 @@ const store = configureStore({
         favorites: favoriteReducer,
         cart: cartSliceReducer,
         shop: shopSliceReducer,
-        serch: productSerchReducer
     },
     preLoadedState: {
         favorite: initialFavorite

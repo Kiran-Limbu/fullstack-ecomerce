@@ -123,14 +123,6 @@ const Navigation = () => {
                   <li>
                     <Link
                       className="flex gap-3 hover:opacity-85 cursor-pointer"
-                      to="/admin/dashbord"
-                    >
-                      <TbLayoutDashboardFilled size={25} /> Dashbord
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="flex gap-3 hover:opacity-85 cursor-pointer"
                       to="/admin/productlist"
                     >
                       <FaProductHunt size={25} /> Products
@@ -142,14 +134,6 @@ const Navigation = () => {
                       to="/admin/categorylist"
                     >
                       <TbCategoryPlus size={25} /> Category
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="flex gap-3 hover:opacity-85 cursor-pointer"
-                      to="/admin/orderlist"
-                    >
-                      <TbBorderSides size={25} /> Orders
                     </Link>
                   </li>
                   <button

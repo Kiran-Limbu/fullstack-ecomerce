@@ -67,7 +67,7 @@ const CategoryList = () => {
         setModelVisible(false);
       }
     } catch (error) {
-      toast.error("Something wet wrong, try again.2");
+      toast.error("Something wet wrong, try again");
       console.log(error);
     }
   };

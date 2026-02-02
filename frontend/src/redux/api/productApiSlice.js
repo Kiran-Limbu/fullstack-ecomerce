@@ -17,7 +17,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         getProductById: builder.query({
             query: (productId) => ({
                 url: `${PRODUCT_URL}/${productId}`,
-                providesTags: (result, error, productId) => [
+                providesTags: (productId) => [
                     { type: "Product", id: productId }
                 ]
             }),
@@ -88,13 +88,12 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
 
         getSearchProducts: builder.query({
-            query: ({ keyword }) => ({
+            query: ({keyword}) => ({
                 url: `${PRODUCT_URL}`,
                 params: { keyword },
             }),
             keepUnusedDataFor: 5,
-            providesTags: ["Products"],
-        })
+        }),
 
     }),
 });

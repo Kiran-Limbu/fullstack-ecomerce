@@ -197,7 +197,7 @@ const fetchNewProduct = asyncHandler(async (req, res) => {
     }
 });
 
-const serchProducts = asyncHandler(async (req, res) =>{
+const serchProducts = async (req, res) =>{
     try {
         const keyword = req.query.keyword ? {
             name: {
@@ -212,7 +212,7 @@ const serchProducts = asyncHandler(async (req, res) =>{
         console.error(error);
         res.status(400).message({error: "Server ERROR"});
     }
-})
+}
 
 
 
