@@ -6,7 +6,7 @@ import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
-import authImg from "../../assets/authImg/img2.avif"
+import authImg from "../../assets/authImg/img2.avif";
 
 const Register = () => {
   const [username, setUserName] = useState("");
@@ -15,22 +15,25 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   // state for password hide and show
   const [showPassword, setShowPassword] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const { search } = useLocation();
   const searchParam = new URLSearchParams(search);
   const redirect = searchParam.get("redirect") || "/";
-
+  
   const [register, { isLoading }] = useRegisterMutation();
   const { userInfo } = useSelector((state) => state.auth);
-
+  
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [navigate, redirect, userInfo]);
+    setIsAdmin(true);
+  }, [navigate, redirect, userInfo, setIsAdmin]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -43,126 +46,140 @@ const Register = () => {
       toast.error("Password do not match");
     } else {
       try {
-        const res = await register({ username, email, password }).unwrap();
+        const res = await register({
+          username,
+          email,
+          password,
+          isAdmin,
+        }).unwrap();
         dispatch(setCredientials({ ...res }));
         navigate(redirect);
         toast.success("Register User Successful");
       } catch (error) {
-        toast.error(error?.data?.message || error.data);
+        toast.error(error.message || error?.data?.message );
       }
     }
   };
   return (
     <div className="w-full min-h-screen flex justify-between items-center bg-zinc-800 px-5 text-white">
-        <div className="md:w-1/2 w-0 md:flex hidden">
-          <img className="h-full w-full object-cover overflow-hidden rounded-xl" src={authImg} alt="authImg" />
-        </div>
-        <div className="md:w-1/2 w-full">
-          <form onSubmit={(e) => submitHandler(e)}>
-            <div className="flex flex-col justify-center gap-3 py-3 px-5">
-              <h1 className="md:text-3xl text:xl font-semibold text-center">
-                Register
-              </h1>
+      <div className="md:w-1/2 w-0 md:flex hidden">
+        <img
+          className="h-full w-full object-cover overflow-hidden rounded-xl"
+          src={authImg}
+          alt="authImg"
+        />
+      </div>
+      <div className="md:w-1/2 w-full">
+        <form onSubmit={(e) => submitHandler(e)}>
+          <div className="flex flex-col justify-center gap-3 py-3 px-5">
+            <h1 className="md:text-3xl text:xl font-semibold text-center">
+              Register
+            </h1>
 
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-md font-semibold mb-2"
-                >
-                  User Name
-                </label>
-                <input
-                  value={username}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
-                  type="text"
-                  id="name"
-                  // required
-                  placeholder="Enter user name"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-md font-semibold mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm"
-                  type="email"
-                  id="email"
-                  // required
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="passwword"
-                  className="block text-md font-semibold mb-2"
-                >
-                  Password
-                </label>
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  // required
-                  placeholder="Enter your password"
-                />
-              </div>
-              <div className="relative">
-                <label
-                  htmlFor="name"
-                  className="block text-md font-semibold mb-2"
-                >
-                  Confirm Password
-                </label>
-                <input
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
-                  type={showPassword ? "text" : "password"}
-                  id="confirmPassword"
-                  // required
-                  placeholder="Enter confirm password"
-                />
-                {/* Eye button to show and hide pass */}
-                <button
-                  className="absolute top-11 right-23 cursor-pointer"
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <RxEyeOpen size={21} />
-                  ) : (
-                    <RxEyeClosed size={21} />
-                  )}
-                </button>
-              </div>
-
-              <button
-                disabled={isLoading}
-                type="submit"
-                className="w-full py-2.5 flex items-center justify-center bg-zinc-500 rounded-md cursor-pointer hover:opacity-85 font-bold text-lg text-white"
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-md font-semibold mb-2"
               >
-                {isLoading ? <ClipLoader size={33} /> : "SIGN UP"}
-              </button>
-              <div className="font-semibold p-[2px]">
-                <span>
-                  Allready have an account?&nbsp;
-                  <Link to="/login" className="text-blue-500">
-                    LogIn
-                  </Link>
-                </span>
-              </div>
+                User Name
+              </label>
+              <input
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
+                type="text"
+                id="name"
+                // required
+                placeholder="Enter user name"
+              />
             </div>
-          </form>
-        </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-md font-semibold mb-2"
+              >
+                Email
+              </label>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm"
+                type="email"
+                id="email"
+                // required
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="passwword"
+                className="block text-md font-semibold mb-2"
+              >
+                Password
+              </label>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
+                type={showPassword ? "text" : "password"}
+                id="password"
+                // required
+                placeholder="Enter your password"
+              />
+            </div>
+            <div className="relative">
+              <label
+                htmlFor="name"
+                className="block text-md font-semibold mb-2"
+              >
+                Confirm Password
+              </label>
+              <input
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className=" border-[2px] w-full border-zinc-400 px-5 py-2.5 rounded-md focus:border-blue-600 focus:outline-none placeholder:text-sm "
+                type={showPassword ? "text" : "password"}
+                id="confirmPassword"
+                // required
+                placeholder="Enter confirm password"
+              />
+              {/* Eye button to show and hide pass */}
+              <button
+                className="absolute top-11 right-23 cursor-pointer"
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <RxEyeOpen size={21} />
+                ) : (
+                  <RxEyeClosed size={21} />
+                )}
+              </button>
+
+                <div className="flex gap-5 py-2 ">
+              <input type="checkbox" />
+              <p className="font-semibold text-green-500"> Are you wnat be Admin</p>
+                </div>
+            </div>
+
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="w-full py-2.5 flex items-center justify-center bg-zinc-500 rounded-md cursor-pointer hover:opacity-85 font-bold text-lg text-white"
+            >
+              {isLoading ? <ClipLoader size={33} /> : "SIGN UP"}
+            </button>
+            <div className="font-semibold p-[2px]">
+              <span>
+                Allready have an account?&nbsp;
+                <Link to="/login" className="text-blue-500">
+                  LogIn
+                </Link>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

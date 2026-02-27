@@ -4,10 +4,10 @@ import bcrypt from 'bcryptjs';
 import generateToken from '../utils/createToken.utils.js';
 
 const createUser = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, isAdmin } = req.body;
 
     if (!username || !email || !password) {
-        throw new Error("All filed are required !");
+        res.status(400).json({message: "All filed are required !"});
     }
 
     const allreadyExistUser = await userModel.findOne({ email });
@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const newUser = new userModel({ username, email, password: hashedPassword });
+    const newUser = new userModel({ username, email, password: hashedPassword, isAdmin });
 
     try {
         await newUser.save();

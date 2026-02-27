@@ -6,7 +6,6 @@ import {
   useUpdateProductMutation,
   useUploadProductImageMutation,
 } from "../../redux/api/productApiSlice";
-import { useGetAllCategoryQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
@@ -28,11 +27,12 @@ const UpdateProduct = () => {
 
   const navigate = useNavigate();
 
-  const { data: categories = [] } = useGetAllCategoryQuery();
   const [uploadProductImage] = useUploadProductImageMutation();
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
+  console.log(image);
+  console.log(imageUrl);
   useEffect(() => {
     if (productData && productData._id) {
       setName(productData.name);
@@ -56,7 +56,7 @@ const UpdateProduct = () => {
       setImage(res.image);
       setImageUrl(res.image);
     } catch (error) {
-      toast.error(data?.error?.meaasge || "Somethig went wrong");
+      toast.error(error?.data?.meaasge || "Somethig went wrong");
     }
   };
 
@@ -206,7 +206,7 @@ const UpdateProduct = () => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="name">Category</label>
               <select
                 className="block py-3 px-2 md:w-[10vw] w-[15vw] border rounded-md bg-zinc-300"
@@ -218,7 +218,7 @@ const UpdateProduct = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="flex justify-around items-center my-6">
             <button
