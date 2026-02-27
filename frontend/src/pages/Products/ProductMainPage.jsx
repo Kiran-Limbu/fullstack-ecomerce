@@ -3,9 +3,8 @@ import { ClipLoader } from "react-spinners";
 import { useGetProductQuery } from "../../redux/api/productApiSlice";
 import FlashSaleProduct from "../../components/product/FlashSaleProduct";
 import HeaderProduct from "../../components/product/HeaderProduct";
-import SearchByCategory from "../category/SearchByCategory";
 
-const ProductPage = () => {
+const ProductMainPage = () => {
   const { keyword } = useParams();
   const { data, isLoading, isError } = useGetProductQuery({ keyword });
 
@@ -45,11 +44,8 @@ const ProductPage = () => {
           ))}
         </div>
 
-        <div className="category">
-          <SearchByCategory />
-        </div>
    </div>
   );
 };
 
-export default ProductPage;
+export default ProductMainPage;

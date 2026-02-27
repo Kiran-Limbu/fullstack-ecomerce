@@ -35,11 +35,9 @@ const AdminMenu = () => {
           >
             <section className="bg-zinc-400 p-3 fixed right-2 rounded-md">
               {[
-                { name: "Admin Dashboard", path: "/admin/dashboard" },
                 { name: "Create Category", path: "/admin/categorylist" },
                 { name: "Create Product", path: "/admin/productlist" },
                 { name: "All Product", path: "/admin/allproductlist" },
-                { name: "Manage Order", path: "/admin/orderlist" },
               ].map((items, index) => (
                 <ul key={index} className="list-none font-semibold">
                   <li>

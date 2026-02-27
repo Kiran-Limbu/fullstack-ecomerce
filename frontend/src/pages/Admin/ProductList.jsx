@@ -4,7 +4,6 @@ import {
   useCreateProductMutation,
   useUploadProductImageMutation,
 } from "../../redux/api/productApiSlice";
-import { useGetAllCategoryQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
@@ -14,17 +13,16 @@ const ProductList = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
 
+  console.log(imageUrl);
   const navigate = useNavigate();
 
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
-  const { data: categories } = useGetAllCategoryQuery();
 
   const handelSubmit = async(e) =>{
     e.preventDefault();
@@ -35,7 +33,6 @@ const ProductList = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
-      productData.append("category", category);
       productData.append("quantity", quantity);
       productData.append("brand", brand);
       productData.append("countInStock", stock);
@@ -167,7 +164,7 @@ const ProductList = () => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="name">Category</label>
               <select
                 className="block py-3 px-2 md:w-[10vw] w-[15vw] border rounded-md bg-zinc-300"
@@ -179,7 +176,7 @@ const ProductList = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="flex justify-center my-6">
             <button

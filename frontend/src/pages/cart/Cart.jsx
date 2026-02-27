@@ -60,6 +60,7 @@ const Cart = () => {
                     </span>
                   </div>
                   <div>
+                    {/* Generate numbers dynamically */}
                     <select
                       className="px-3 py-3 border-1 rounded-md font-semibold"
                       value={item.qty}
@@ -72,6 +73,7 @@ const Cart = () => {
                           {x + 1}
                         </option>
                       ))}
+
                     </select>
                   </div>
                   <div>
