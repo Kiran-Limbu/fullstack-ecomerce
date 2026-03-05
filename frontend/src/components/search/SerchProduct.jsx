@@ -15,7 +15,7 @@ const SerchProduct = () => {
     <>
       <form className="flex items-center justify-center" onSubmit={submitHandler}>
         <input
-          className="md:w-[30vw] w-1/2 px-7 truncate bg-white py-2 font-semibold rounded-md border-[1px] border-zinc-200 rounded-r-none"
+          className="md:w-[30vw] w-[80%] px-7 truncate bg-white py-2 font-semibold rounded-md border-[1px] border-zinc-200 rounded-r-none"
           type="text"
           placeholder="Search in store"
           value={keyword}

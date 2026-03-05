@@ -3,7 +3,7 @@ import productModel from "../models/product.model.js";
 
 const createProduct = asyncHandler(async (req, res) => {
     try {
-        const { name, brand, quantity, category, description, price } = req.fields;
+        const { name, brand, quantity, description, actualPrice, discountPrice } = req.fields;
 
         switch (true) {
             case !name:
@@ -12,12 +12,12 @@ const createProduct = asyncHandler(async (req, res) => {
                 return res.status(400).json({ error: "Brand is rquired !" })
             case !quantity:
                 return res.status(400).json({ error: "Quantity is rquired !" })
-            case !category:
-                return res.status(400).json({ error: "Category is rquired !" })
             case !description:
                 return res.status(400).json({ error: "Description is rquired !" })
-            case !price:
+            case !discountPrice:
                 return res.status(400).json({ error: "Price is rquired !" })
+            case !discountPrice:
+                return res.status(400).json({ error: "Discount price is rquired !" })
         }
 
         const product = await productModel.create({ ...req.fields });
@@ -31,7 +31,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
 const updateProduct = asyncHandler(async (req, res) => {
     try {
-        const { name, brand, quantity, category, description, price } = req.fields;
+        const { name, brand, quantity, description, actualPrice } = req.fields;
 
         switch (true) {
             case !name:
@@ -40,11 +40,9 @@ const updateProduct = asyncHandler(async (req, res) => {
                 return res.status(400).json({ error: "Brand is rquired !" })
             case !quantity:
                 return res.status(400).json({ error: "Quantity is rquired !" })
-            case !category:
-                return res.status(400).json({ error: "Category is rquired !" })
             case !description:
                 return res.status(400).json({ error: "Description is rquired !" })
-            case !price:
+            case !actualPrice:
                 return res.status(400).json({ error: "Price is rquired !" })
         }
 
@@ -69,7 +67,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
         }
-        
+
         res.status(200).json({ message: "Product deleted sucessfully ✅" });
 
     } catch (error) {
@@ -122,7 +120,6 @@ const getProductById = asyncHandler(async (req, res) => {
 const fetchAllProduct = asyncHandler(async (req, res) => {
     try {
         const products = await productModel.find({})
-            .populate('category')
             .limit(13)
             .sort({ createAt: -1 });
 
@@ -157,7 +154,7 @@ const addProductReviews = asyncHandler(async (req, res) => {
             }
 
             product.reviews.push(review);
-            product.numReviews = product.reviews.length
+            product.numReviews = product.reviews.length;
 
             product.rating =
                 product.reviews.reduce((acc, item) => item.rating + acc, 0) /
@@ -197,7 +194,7 @@ const fetchNewProduct = asyncHandler(async (req, res) => {
     }
 });
 
-const serchProducts = async (req, res) =>{
+const serchProducts = async (req, res) => {
     try {
         const keyword = req.query.keyword ? {
             name: {
@@ -205,12 +202,12 @@ const serchProducts = async (req, res) =>{
                 $options: "i"
             }
         } : [];
-        const products = await productModel.find({name: keyword});
+        const products = await productModel.find({ name: keyword });
         res.json(products);
 
     } catch (error) {
         console.error(error);
-        res.status(400).message({error: "Server ERROR"});
+        res.status(400).message({ error: "Server ERROR" });
     }
 }
 

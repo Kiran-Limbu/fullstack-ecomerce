@@ -1,6 +1,8 @@
-import path from 'path'
+import path from 'path';
 import express from 'express';
 import multer from 'multer';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const router = express.Router();
 
@@ -10,8 +12,8 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const extname = path.extname(file.originalname)
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix + extname)
+        const suffix = uuidv4();
+        cb(null, file.fieldname + '-' + suffix + extname)
     },
 });
 

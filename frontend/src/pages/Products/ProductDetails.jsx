@@ -40,8 +40,10 @@ const ProductDetails = () => {
     useCreateReviewMutation();
 
   const addToCartHandler = () => {
-    dispatch(addToCart({...product, qty}))
-    navigate("/cart");
+    if(userInfo){
+      dispatch(addToCart({...product, qty}))
+      navigate("/cart");
+    } else navigate("/login");
   };
 
    const submitHandler = async (e) => {
@@ -103,7 +105,7 @@ const ProductDetails = () => {
               <IoIosStar />
               Rating : {product.rating}
             </li>
-            <li>$ {product.price.toFixed(2)}</li>
+            <li>$ {product.actualPrice.toFixed(2)}</li>
             <li className="flex items-center gap-2">
               <MdBrandingWatermark />
               Brand: {product.brand}

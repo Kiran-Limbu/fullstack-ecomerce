@@ -9,6 +9,7 @@ import {
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
+
 const UpdateProduct = () => {
   const params = useParams();
   const { data: productData, refetch} = useGetProductByIdQuery(params._id);
@@ -20,7 +21,8 @@ const UpdateProduct = () => {
   const [description, setDescription] = useState(
     productData?.description || ""
   );
-  const [price, setPrice] = useState(productData?.price || "");
+  const [actualPrice, setActualPrice] = useState(productData?.actualPrice || "");
+  const [discountPrice, setDiscountPrice] = useState(productData?.discountPrice || "");
   const [category, setCategory] = useState(productData?.category || "");
   const [brand, setBrand] = useState(productData?.brand || "");
   const [stock, setStock] = useState(productData?.countInStock || "");
@@ -31,13 +33,13 @@ const UpdateProduct = () => {
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
-  console.log(image);
-  console.log(imageUrl);
+  
   useEffect(() => {
     if (productData && productData._id) {
       setName(productData.name);
       setDescription(productData.description);
-      setPrice(productData.price);
+      setActualPrice(productData.actualPrice);
+      setDiscountPrice(productData.discountPrice);
       setCategory(productData?.category);
       setBrand(productData.brand);
       setStock(productData.countInStock);
@@ -67,7 +69,8 @@ const UpdateProduct = () => {
     formData.append("image", image);
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("price", price);
+    formData.append("actualPrice", actualPrice);
+    formData.append("discountPrice", discountPrice);
     formData.append("category", category);
     formData.append("quantity", quantity);
     formData.append("brand", brand);
@@ -159,8 +162,8 @@ const UpdateProduct = () => {
               <input
                 type="number"
                 className="py-3 px-2 border rounded-md block bg-zinc-300"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={actualPrice}
+                onChange={(e) => setActualPrice(e.target.value)}
               />
             </div>
           </div>
@@ -206,19 +209,7 @@ const UpdateProduct = () => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-            {/* <div>
-              <label htmlFor="name">Category</label>
-              <select
-                className="block py-3 px-2 md:w-[10vw] w-[15vw] border rounded-md bg-zinc-300"
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {categories?.map((category) => (
-                  <option key={category._id} value={category._id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div> */}
+           
           </div>
           <div className="flex justify-around items-center my-6">
             <button

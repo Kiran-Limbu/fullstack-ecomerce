@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners";
 import ProductSlider from "./ProductSlider";
 import { Link } from 'react-router-dom'
 
-const HeaderProduct = () => {
+const HeroSectionProduct = () => {
   const { data: topProductData, isLoading, error } = useGetTopProductQuery();
 
   if (isLoading) {
@@ -36,7 +36,7 @@ const HeaderProduct = () => {
                 />
               <div className="flex justify-between pt-2">
                 <p className="capitalize px-3 py-2 truncate">{product.name}</p>
-                <span className="px-3 py-2 bg-zinc-600 rounded-md">${product.price.toFixed(2)}</span>
+                <span className="px-3 py-2 bg-red-500 rounded-md">${product.actualPrice.toFixed(2)}</span>
               </div>
                 </Link>
             </div>
@@ -50,4 +50,4 @@ const HeaderProduct = () => {
   );
 };
 
-export default HeaderProduct;
+export default HeroSectionProduct;
