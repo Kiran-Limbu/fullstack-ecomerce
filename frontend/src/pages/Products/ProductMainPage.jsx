@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { useGetProductQuery } from "../../redux/api/productApiSlice";
 import FlashSaleProduct from "../../components/product/FlashSaleProduct";
-import HeaderProduct from "../../components/product/HeaderProduct";
+import HeroSectionProduct from "../../components/product/HeroSectionProduct";
 
 const ProductMainPage = () => {
   const { keyword } = useParams();
@@ -26,7 +26,7 @@ const ProductMainPage = () => {
 
   return (
     <div className="w-full min-h-screen text-white">
-      {!keyword ? <HeaderProduct /> : null}
+      {!keyword ? <HeroSectionProduct /> : null}
           <div className="flex items-center justify-around pt-7">
             <div className="flex items-center gap-7">
               <div className="w-2 h-9 rounded-md bg-zinc-500"></div>

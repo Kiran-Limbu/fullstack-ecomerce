@@ -12,7 +12,8 @@ const ProductList = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [actualPrice, setActualPrice] = useState("");
+  const [discountPrice, setDiscountPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
@@ -32,7 +33,8 @@ const ProductList = () => {
       productData.append("image", image);
       productData.append("name", name);
       productData.append("description", description);
-      productData.append("price", price);
+      productData.append("actualPrice", actualPrice);
+      productData.append("discountPrice", discountPrice);
       productData.append("quantity", quantity);
       productData.append("brand", brand);
       productData.append("countInStock", stock);
@@ -75,7 +77,7 @@ const ProductList = () => {
         <AdminMenu />
         </div>
         <div className="px-7 py-5">
-          <h1 className="md:text-3xl capitalize text-2xl font-semibold">Create Product :</h1>
+          <h1 className="md:text-3xl capitalize text-2xl font-semibold text-white">Create Product :</h1>
         </div>
         {imageUrl && (
           <div className="text-center">
@@ -104,7 +106,7 @@ const ProductList = () => {
         <div className="px-10 py-4 w-full">
           <div className="flex flex-wrap justify-around px-3 py-2">
             <div>
-              <label htmlFor="name"> Name </label>
+              <label className="text-white" htmlFor="name"> Name </label>
               <input
                 type="text"
                 className="py-3 px-2 border rounded-md block bg-zinc-300"
@@ -112,19 +114,31 @@ const ProductList = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+          </div>
+          {/* price div */}
+              <div className="flex flex-wrap justify-around px-3 py-2">
             <div>
-              <label htmlFor="name"> Price </label>
+              <label className="text-white" htmlFor="name"> Actual Price </label>
               <input
                 type="number"
                 className="py-3 px-2 border rounded-md block bg-zinc-300"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={actualPrice}
+                onChange={(e) => setActualPrice(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="text-white" htmlFor="name"> Discount Price </label>
+              <input
+                type="number"
+                className="py-3 px-2 border rounded-md block bg-zinc-300"
+                value={discountPrice}
+                onChange={(e) => setDiscountPrice(e.target.value)}
               />
             </div>
           </div>
           <div className="flex flex-wrap justify-around px-3 py-2">
             <div>
-              <label htmlFor="name"> Quantity </label>
+              <label className="text-white" htmlFor="name"> Quantity </label>
               <input
                 type="number"
                 className="py-3 px-2 border rounded-md block bg-zinc-300"
@@ -133,7 +147,7 @@ const ProductList = () => {
               />
             </div>
             <div>
-              <label htmlFor="name"> Brand </label>
+              <label className="text-white" htmlFor="name"> Brand </label>
               <input
                 type="text"
                 className="py-3 px-2 border rounded-md block bg-zinc-300"
@@ -143,7 +157,7 @@ const ProductList = () => {
             </div>
           </div>
           <div className="text-center">
-            <label className="my-2 block" htmlFor="name">
+            <label className="my-2 block text-white" htmlFor="name">
               Description
             </label>
             <textarea
@@ -156,7 +170,7 @@ const ProductList = () => {
 
           <div className="flex justify-around">
             <div>
-              <label htmlFor="name"> Count In Stock</label>
+              <label className="text-white" htmlFor="name"> Count In Stock</label>
               <input
                 type="number"
                 className="block py-3 px-2 md:w-[10vw] w-[15vw] border rounded-md bg-zinc-300"
@@ -164,23 +178,10 @@ const ProductList = () => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-            {/* <div>
-              <label htmlFor="name">Category</label>
-              <select
-                className="block py-3 px-2 md:w-[10vw] w-[15vw] border rounded-md bg-zinc-300"
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {categories?.map((category) => (
-                  <option key={category._id} value={category._id} >
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div> */}
           </div>
           <div className="flex justify-center my-6">
             <button
-              className="py-3 w-[25vw] cursor-pointer rounded-md bg-zinc-600 hover:opacity-95 font-semibold md:text-lg text-md"
+              className="py-3 w-[25vw] text-white cursor-pointer rounded-md bg-zinc-600 hover:opacity-95 font-semibold md:text-lg text-md"
               onClick={handelSubmit}
             >
               Submit

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { motion, AnimatePresence } from "motion/react";
@@ -35,7 +35,6 @@ const AdminMenu = () => {
           >
             <section className="bg-zinc-400 p-3 fixed right-2 rounded-md">
               {[
-                { name: "Create Category", path: "/admin/categorylist" },
                 { name: "Create Product", path: "/admin/productlist" },
                 { name: "All Product", path: "/admin/allproductlist" },
               ].map((items, index) => (

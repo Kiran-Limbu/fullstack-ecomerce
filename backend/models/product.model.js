@@ -40,11 +40,6 @@ const productSchema = new mongoose.Schema({
         required: true,
         default: 1,
     },
-    category: {
-        type: ObjectId,
-        ref: 'Category',
-        required: true,
-    },
     description: {
         type: String,
         required: true,
@@ -60,9 +55,14 @@ const productSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
-    price: {
+    actualPrice: {
         type: Number,
         required: true,
+        default: 0,
+    },
+    discountPrice: {
+        type: Number,
+        required: true, 
         default: 0,
     },
     countInStock: {
