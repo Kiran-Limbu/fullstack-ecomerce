@@ -125,14 +125,14 @@ const Navigation = () => {
                       <FaProductHunt size={25} /> Products
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       className="flex gap-3 hover:opacity-85 cursor-pointer"
                       to="/admin/categorylist"
                     >
                       <TbCategoryPlus size={25} /> Category
                     </Link>
-                  </li>
+                  </li> */}
                   <button
                     className="flex gap-3 hover:opacity-85 cursor-pointer"
                     onClick={() => {

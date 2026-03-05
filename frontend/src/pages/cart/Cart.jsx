@@ -56,7 +56,7 @@ const Cart = () => {
                   <div className="text-white font-semibold capitalize text-xl flex flex-col gap-4">
                     <Link to={`/product/${item._id}`}> {item.name} </Link>
                     <span className="text-red-500">
-                      $ {item.price.toFixed(2)}
+                      $ {item.actualPrice.toFixed(2)}
                     </span>
                   </div>
                   <div>

@@ -54,7 +54,7 @@ const SearchPage = () => {
                     {product.name}
                   </h1>
                   <h2 className="py-2 font-semibold text-red-500">
-                    $ {product.price.toFixed(2)}
+                    $ {product.actualPrice.toFixed(2)}
                   </h2>
                   <span className="py-2 px-2">
                     <Rating value={product.rating} />

@@ -158,7 +158,7 @@ const Register = () => {
 
                 <div className="flex gap-5 py-2 ">
               <input type="checkbox" />
-              <p className="font-semibold text-green-500"> Are you wnat be Admin</p>
+              <p className="font-semibold text-green-500"> Are you want to be Admin</p>
                 </div>
             </div>
 

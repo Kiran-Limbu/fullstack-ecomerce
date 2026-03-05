@@ -64,7 +64,7 @@ const AllProducts = () => {
                       <span>{product.description.substring(0, 35)}....</span>
                     </div>
                     <div className="px-3 font-md text-red-500">
-                      <span>$ {product.price.toFixed(2)}</span>
+                      <span>$ {product.actualPrice.toFixed(2)}</span>
                     </div>
                     <div className="px-3">
                       <Link

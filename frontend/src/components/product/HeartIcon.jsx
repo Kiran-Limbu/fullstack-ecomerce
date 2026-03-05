@@ -23,7 +23,7 @@ const HeartIcon = ({ product }) => {
   useEffect(() => {
     const favoritesFromLocalStorage = getFavoriteFromLocalStorage();
     dispatch(setFavorites(favoritesFromLocalStorage));
-  }, []);
+  }, [dispatch]);
 
   const toggleFavorites = () => {
     if (isFavorites) {
@@ -37,7 +37,7 @@ const HeartIcon = ({ product }) => {
   };
 
   return (
-    <div className="absolute bottom-1/2 right-10 top-9 z-99 ">
+    <div className="absolute bottom-1/2 right-10 top-9 z-99 w-fit h-fit">
       <button onClick={toggleFavorites} className="cursor-pointer">
         {isFavorites ? (
           <MdDeleteOutline className="text-red-700 " size={30} />

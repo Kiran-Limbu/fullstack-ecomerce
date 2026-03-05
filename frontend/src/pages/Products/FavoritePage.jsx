@@ -35,7 +35,7 @@ const FavoritePage = () => {
         </h1>
       </div>
 
-      <div className="grid md:grid-cols-3 grid-cols-1 px-7 py-9">
+      <div className="grid md:grid-cols-3 gap-5 grid-cols-1 px-7 py-9 w-fit h-full">
         {favorites.map((product) => (
           <FlashSaleProduct key={product._id} product={product} />
         ))}

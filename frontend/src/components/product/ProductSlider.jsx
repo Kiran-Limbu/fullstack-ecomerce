@@ -26,7 +26,7 @@ const ProductSlider = () => {
       .slick-dots li button:before {
         color: white !important;
         opacity: 99;
-        font-size: 13px;
+        font-size: 10px;
         border: none;
       }
       .slick-dots li.slick-active button:before {
@@ -41,13 +41,13 @@ const ProductSlider = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="sm:h-[45vh] w-full object-cover rounded-md overflow-hidden"
+                className="h-1/2 w-full object-cover rounded-md overflow-hidden"
               />
               <div className="grid grid-cols-3 justify-items-center-safe py-3">
                 <div className="flex flex-col gap-3">
                   <ul>
                     <li className="capitalize">{product.name}</li>
-                    <li>$ {product.price.toFixed(2)}</li>
+                    <li>$ {product.actualPrice.toFixed(2)}</li>
                   </ul>
                 </div>
                 <div className="flex flex-col gap-3">
