@@ -35,7 +35,7 @@ const SearchPage = () => {
       <div className="text-white font-semibold text-2xl px-4 py-3">
         Results For: " {keyword} "
       </div>
-      <div className="grid md:grid-cols-3 xl:grid-cols-5 sm:grid-cols-2 grid-col-1 w-full">
+      <div className="grid md:grid-cols-3 xl:grid-cols-4 grid-col-1 w-full">
         {productData.products.length === 0 ? (
           <div className="pt-[20vw] font-semibold md:text-4xl text-2xl text-white">
             No products found !!
